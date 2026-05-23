@@ -1,129 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Whirl Together</title>
-  <style>
-    * { 
-      margin: 0; 
-      padding: 0; 
-      box-sizing: border-box;
-      scroll-behavior: smooth; 
-    }
-    
-    body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: linear-gradient(180deg, #0a0a0f 0%, #141421 100%);
-      color: #fff;
-      text-align: center;
-      line-height: 1.6;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whirl Together</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #0a0a0f;
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
 
-    nav {
-      position: sticky;
-      top: 0;
-      background: rgba(10, 10, 15, 0.9);
-      backdrop-filter: blur(10px);
-      padding: 15px;
-      border-bottom: 1px solid #2a2a3a;
-      z-index: 100;
-    }
-    
-    nav a {
-      color: #a1a1aa;
-      text-decoration: none;
-      margin: 0 12px;
-      font-size: 15px;
-      font-weight: 500;
-      transition: 0.2s;
-    }
-    
-    nav a:hover { 
-      color: #00d4ff; 
-      text-shadow: 0 0 10px #00d4ff;
-    }
+h1 {
+  font-size: 40px;
+  color: #00d4ff;
+  margin-top: 40px;
+}
 
-    .hero {
-      padding: 100px 20px 80px;
-    }
-    
-    h1 {
-      font-size: 56px;
-      background: linear-gradient(90deg, #7b5cff, #00d4ff, #7b5cff);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: shine 3s linear infinite;
-      margin-bottom: 15px;
-    }
-    
-    @keyframes shine {
-      to { background-position: 200% center; }
-    }
-    
-    h2 { 
-      font-size: 36px; 
-      margin-bottom: 15px;
-      color: #fff;
-    }
-    
-    p.subtitle {
-      font-size: 18px;
-      color: #a1a1aa;
-      margin-bottom: 30px;
-    }
-    
-    .btn {
-      display: inline-block;
-      padding: 14px 32px;
-      margin: 10px 8px;
-      background: #7b5cff;
-      color: white;
-      text-decoration: none;
-      border-radius: 50px;
-      transition: all 0.3s ease;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: 600;
-      box-shadow: 0 4px 15px rgba(123, 92, 255, 0.3);
-    }
-    
-    .btn:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 25px rgba(123, 92, 255, 0.5);
-    }
-    
-    .btn-tiktok { 
-      background: linear-gradient(90deg, #ff0050, #00f2ea);
-      box-shadow: 0 4px 15px rgba(255, 0, 80, 0.3);
-    }
-    
-    .btn-facebook { 
-      background: #1877f2;
-      box-shadow: 0 4px 15px rgba(24, 119, 242, 0.3);
-    }
-    
-    .btn-green { 
-      background: linear-gradient(90deg, #22c55e, #16a34a);
-      box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
-    }
-    
-    .btn-gold { 
-      background: linear-gradient(90deg, #facc15, #f59e0b); 
-      color: #0a0a0f; 
-      font-weight: 700;
-      box-shadow: 0 4px 15px rgba(250, 204, 21, 0.4);
-    }
-    
-    .section {
-      padding: 80px 20px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-     
+h2 {
+  font-size: 28px;
+  color: #7b5cff;
+  margin-top: 50px;
+}
+
+.section {
+  padding: 30px 20px;
+  border-bottom: 1px solid #2a2a3a;
+}
+
+.box {
+  background: #15151f;
+  padding: 25px;
+  margin: 20px auto;
+  max-width: 600px;
+  border-radius: 12px;
+  border: 1px solid #2a2a3a;
+  font-size: 18px;
+}
+
+.btn {
+  background: #7b5cff;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.btn:hover {
+  background: #6b4cff;
+}
+
+.btn-green {
+  background: #22c55e;
+}
+
+.btn-gold {
+  background: #facc15;
+  color: black;
+  font-weight: bold;
+}
+
+a {
+  color: #00d4ff;
+  text-decoration: none;
+}
+
+.nav {
+  background: #15151f;
+  padding: 15px;
+  position: sticky;
+  top: 0;
+}
+
+.nav a {
+  margin: 0 10px;
+  color: #a1a1aa;
+}
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <a href="#home">Home</a>
+  <a href="#encourage">Encourage</a>
+  <a href="#jokes">Jokes</a>
+  <a href="#sponsor">Sponsor</a>
+</div>
+
+<div class="section" id="home">
+  <h1>Whirl Together</h1>
+  <p>Connecting talent with opportunities</p>
+  <a href="https://chat.whatsapp.com/J0pSLuqKUsTFxYoat4lJbj" class="btn">Join WhatsApp</a>
+  <a href="https://www.tiktok.com/@whirltogetherforever" class="btn">TikTok</a>
+  <a href="https://www.facebook.com/profile.php?id=61589247127526" class="btn">Facebook</a>
+</div>
+
+<div class="section" id="encourage">
+  <h2>Daily Encouragement 💪</h2>
+  <div class="box" id="quote">You can do it. One step at a time.</div>
+  <button class="btn btn-green" onclick="newQuote()">Get Random</button>
+</div>
+
+<div class="section" id="jokes">
+  <h2>Quick Jokes 😂</h2>
+  <div class="box" id="joke">Why don't programmers like nature? Too many bugs.</div>
+  <button class="btn btn-green" onclick="newJoke()">Tell Me Another</button>
+</div>
+
+<div class="section" id="sponsor">
+  <h2>Become a Sponsor 🤝</h2>
+  <div class="box">
+    <p><b>Are you a sponsor?</b></p>
+    <p>Send your info to the WhatsApp admin to partner with us.</p>
+    <a href="https://chat.whatsapp.com/J0pSLuqKUsTFxYoat4lJbj" class="btn btn-gold">Message Admin on WhatsApp</a>
+  </div>
+</div>
+
+<script>
+var quotes = [
+  "You can do it. One step at a time.",
+  "Your only limit is your mind. Keep pushing.",
+  "Every expert was once a beginner. Start now.",
+  "You're stronger than you think. Don't quit.",
+  "Small progress is still progress. Celebrate it.",
+  "Believe in yourself. Others already do.",
+  "The hardest part is starting. You've got this.",
+  "Failure is just practice for success.",
+  "Your future self will thank you for trying today.",
+  "Keep going. The world needs what only you can do."
+];
+
+var jokes = [
+  "Why don't programmers like nature? Too many bugs.",
+  "I told my computer I needed a break. Now it sends me KitKat ads.",
+  "Why did the scarecrow win an award? Outstanding in his field.",
+  "I'm on a seafood diet. I see food, and I eat it.",
+  "Why don't skeletons fight? They don't have the guts.",
+  "What do you call fake spaghetti? An impasta.",
+  "Why did the math book look sad? Too many problems.",
+  "I asked about paranoia books. She whispered 'They're behind you.'",
+  "Why can't your nose be 12 inches? Then it would be a foot.",
+  "I would tell an elevator joke, but it's uplifting."
+];
+
+function newQuote() {
+  var i = Math.floor(Math.random() * quotes.length);
+  document.getElementById('quote').innerHTML = quotes[i];
+}
+
+function newJoke() {
+  var i = Math.floor(Math.random() * jokes.length);
+  document.getElementById('joke').innerHTML = jokes[i];
+}
+</script>
+
+</body>
+  </html>
