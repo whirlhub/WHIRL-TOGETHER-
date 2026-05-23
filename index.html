@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Whirl Together</title>
   <style>
+    * { scroll-behavior: smooth; }
     body {
       font-family: Arial, sans-serif;
       background: #0a0a0f;
@@ -13,15 +14,33 @@
       padding: 0;
       text-align: center;
     }
+    nav {
+      position: sticky;
+      top: 0;
+      background: #0a0a0f;
+      padding: 15px;
+      border-bottom: 1px solid #2a2a3a;
+      z-index: 100;
+    }
+    nav a {
+      color: #a1a1aa;
+      text-decoration: none;
+      margin: 0 12px;
+      font-size: 15px;
+      transition: 0.2s;
+    }
+    nav a:hover { color: #00d4ff; }
    .hero {
-      padding: 100px 20px 60px;
+      padding: 80px 20px 60px;
     }
     h1 {
       font-size: 48px;
       background: linear-gradient(90deg, #7b5cff, #00d4ff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
     }
+    h2 { font-size: 32px; margin-bottom: 10px; }
    .btn {
       display: inline-block;
       padding: 14px 30px;
@@ -39,12 +58,10 @@
       transform: translateY(-3px);
       box-shadow: 0 10px 25px rgba(123, 92, 255, 0.4);
     }
-   .btn-tiktok {
-      background: linear-gradient(90deg, #ff0050, #00f2ea);
-    }
-   .btn-facebook {
-      background: #1877f2;
-    }
+   .btn-tiktok { background: linear-gradient(90deg, #ff0050, #00f2ea); }
+   .btn-facebook { background: #1877f2; }
+   .btn-green { background: #22c55e; }
+   .btn-gold { background: linear-gradient(90deg, #facc15, #f59e0b); color: #0a0a0f; font-weight: bold; }
    .section {
       padding: 60px 20px;
       max-width: 900px;
@@ -62,17 +79,22 @@
       border-radius: 12px;
       border: 1px solid #2a2a3a;
     }
-   .card h3 {
-      color: #00d4ff;
-      margin-top: 0;
+   .card h3 { color: #00d4ff; margin-top: 0; }
+   .quote-box, .joke-box, .sponsor-box {
+      background: #15151f;
+      padding: 30px;
+      border-radius: 12px;
+      border: 1px solid #2a2a3a;
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      line-height: 1.6;
+      flex-direction: column;
     }
-    a {
-      color: #00d4ff;
-    }
-   .note {
-      color: #a1a1aa;
-      font-size: 0.95rem;
-    }
+    a { color: #00d4ff; }
+   .note { color: #a1a1aa; font-size: 0.95rem; }
    .music-box {
       background: #15151f;
       padding: 25px;
@@ -85,73 +107,31 @@
       color: #a1a1aa;
       margin-bottom: 15px;
     }
-    audio {
-      width: 100%;
-      margin-top: 10px;
-    }
+    audio { width: 100%; margin-top: 10px; }
   </style>
 </head>
 <body>
 
-  <div class="hero">
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#encourage">Encouragement</a>
+    <a href="#jokes">Jokes</a>
+    <a href="#sponsors-cta">Sponsor Us</a>
+    <a href="#music">Music</a>
+    <a href="#sponsors">Links</a>
+  </nav>
+
+  <div class="hero" id="home">
     <h1>Whirl Together</h1>
-    <p>Connecting talent with opportunities and sponsors</p>
+    <p>Connecting talent with opportunities, motivation, and good vibes</p>
     <a href="https://chat.whatsapp.com/J0pSLuqKUsTFxYoat4lJbj" target="_blank" class="btn">Join WhatsApp Group</a>
     <a href="https://www.tiktok.com/@whirltogetherforever" target="_blank" class="btn btn-tiktok">Follow on TikTok</a>
     <a href="https://www.facebook.com/profile.php?id=61589247127526" target="_blank" class="btn btn-facebook">Follow on Facebook</a>
   </div>
 
-  <div class="section" id="music">
-    <h2>Play Music</h2>
-    <div class="music-box">
-      <p class="note">Pick a song from your phone and play it here</p>
-      <input type="file" id="musicFile" accept="audio/*">
-      <audio id="player" controls></audio>
-    </div>
-  </div>
-
-  <div class="section" id="sponsors">
-    <h2>Sponsors & Links</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Whirl Community</h3>
-        <p>Official WhatsApp group</p>
-        <a href="https://chat.whatsapp.com/J0pSLuqKUsTFxYoat4lJbj" target="_blank">Join Chat</a>
-      </div>
-
-      <div class="card">
-        <h3>TikTok</h3>
-        <p>@whirltogetherforever</p>
-        <a href="https://www.tiktok.com/@whirltogetherforever" target="_blank">View Profile</a>
-      </div>
-
-      <div class="card">
-        <h3>Facebook</h3>
-        <p>Follow us on Facebook</p>
-        <a href="https://www.facebook.com/profile.php?id=61589247127526" target="_blank">View Page</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="section" id="submit">
-    <h2>Add Your Link</h2>
-    <p class="note">Want your work featured here? DM the link to the group admin or drop it in the WhatsApp group.</p>
-    <a href="https://chat.whatsapp.com/J0pSLuqKUsTFxYoat4lJbj" target="_blank" class="btn">Submit via WhatsApp</a>
-    <p class="note">I’ll add it to the site within 24h.</p>
-  </div>
-
-  <footer style="padding: 40px; opacity: 0.6;">
-    © 2026 Whirl Together
-  </footer>
-
-<script>
-  document.getElementById('musicFile').onchange = function(event) {
-    const file = event.target.files[0];
-    if (file) {
-      document.getElementById('player').src = URL.createObjectURL(file);
-    }
-  };
-</script>
-
-</body>
-      </html>
+  <!-- ENCOURAGEMENT SECTION -->
+  <div class="section" id="encourage">
+    <h2>Daily Encouragement 💪</h2>
+    <p class="note">You got this. Click for a boost.</p>
+    <div class="quote-box" id="quoteBox">You can do it. One step at a time.</div>
+    <button class="btn btn-green" onclick
