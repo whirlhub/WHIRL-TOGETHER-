@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Whirl Together</title>
 <style>
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: Arial, sans-serif;
   background: #0a0a0f;
@@ -12,48 +16,72 @@ body {
   text-align: center;
   margin: 0;
   padding: 0;
+  word-wrap: break-word;
 }
 
-h1 {
-  font-size: 40px;
-  color: #00d4ff;
-  margin-top: 40px;
+.nav {
+  background: #15151f;
+  padding: 12px 5px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
-h2 {
-  font-size: 28px;
-  color: #7b5cff;
-  margin-top: 50px;
+.nav a {
+  color: #a1a1aa;
+  text-decoration: none;
+  font-size: 14px;
 }
 
 .section {
-  padding: 30px 20px;
+  padding: 40px 15px;
   border-bottom: 1px solid #2a2a3a;
 }
 
-.box {
-  background: #15151f;
-  padding: 25px;
-  margin: 20px auto;
-  max-width: 600px;
-  border-radius: 12px;
-  border: 1px solid #2a2a3a;
-  font-size: 18px;
+h1 {
+  font-size: 32px;
+  color: #00d4ff;
+  margin: 30px 0 15px 0;
+  padding: 0 10px;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 26px;
+  color: #7b5cff;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 16px;
+  color: #a1a1aa;
+  padding: 0 10px;
+  margin-bottom: 25px;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 10px;
 }
 
 .btn {
   background: #7b5cff;
   color: white;
   border: none;
-  padding: 12px 25px;
+  padding: 12px 20px;
   border-radius: 25px;
-  font-size: 16px;
+  font-size: 15px;
   cursor: pointer;
-  margin: 10px;
-}
-
-.btn:hover {
-  background: #6b4cff;
+  text-decoration: none;
+  display: inline-block;
+  min-width: 120px;
 }
 
 .btn-green {
@@ -66,21 +94,21 @@ h2 {
   font-weight: bold;
 }
 
-a {
-  color: #00d4ff;
-  text-decoration: none;
-}
-
-.nav {
+.box {
   background: #15151f;
-  padding: 15px;
-  position: sticky;
-  top: 0;
+  padding: 25px 20px;
+  margin: 20px auto;
+  max-width: 600px;
+  border-radius: 12px;
+  border: 1px solid #2a2a3a;
+  font-size: 18px;
+  line-height: 1.5;
 }
 
-.nav a {
-  margin: 0 10px;
-  color: #a1a1aa;
+/* Make sure long words break */
+.box, h1, p {
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 </style>
 </head>
@@ -96,9 +124,11 @@ a {
 <div class="section" id="home">
   <h1>Whirl Together</h1>
   <p>Connecting talent with opportunities</p>
-  <a href="https://chat.whatsapp.com/J0pSLuqKUsTFxYoat4lJbj" class="btn">Join WhatsApp</a>
-  <a href="https://www.tiktok.com/@whirltogetherforever" class="btn">TikTok</a>
-  <a href="https://www.facebook.com/profile.php?id=61589247127526" class="btn">Facebook</a>
+  <div class="button-group">
+    <a href="https://chat.whatsapp.com/J0pSLuqKUsTFxYoat4lJbj" class="btn">Join WhatsApp</a>
+    <a href="https://www.tiktok.com/@whirltogetherforever" class="btn">TikTok</a>
+    <a href="https://www.facebook.com/profile.php?id=61589247127526" class="btn">Facebook</a>
+  </div>
 </div>
 
 <div class="section" id="encourage">
@@ -116,9 +146,9 @@ a {
 <div class="section" id="sponsor">
   <h2>Become a Sponsor 🤝</h2>
   <div class="box">
-    <p><b>Are you a sponsor?</b></p>
+    <p style="color: white; font-size: 18px;"><b>Are you a sponsor?</b></p>
     <p>Send your info to the WhatsApp admin to partner with us.</p>
-    <a href="https://chat.whatsapp.com/J0pSLuqKUsTFxYoat4lJbj" class="btn btn-gold">Message Admin on WhatsApp</a>
+    <a href="https://chat.whatsapp.com/J0pSLuqKUsTFxYoat4lJbj" class="btn btn-gold">Message Admin</a>
   </div>
 </div>
 
