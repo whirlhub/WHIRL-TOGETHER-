@@ -5,22 +5,38 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Whirl Together</title>
 <style>
-* {
-  box-sizing: border-box;
+:root {
+  --bg: #0a0a0f;
+  --card: #15151f;
+  --text: #fff;
+  --muted: #a1a1aa;
+  --accent1: #00d4ff;
+  --accent2: #7b5cff;
+  --border: #2a2a3a;
 }
+
+[data-theme="light"] {
+  --bg: #f8fafc;
+  --card: #fff;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+}
+
+* { box-sizing: border-box; }
 
 body {
   font-family: Arial, sans-serif;
-  background: #0a0a0f;
-  color: white;
+  background: var(--bg);
+  color: var(--text);
   text-align: center;
   margin: 0;
   padding: 0;
-  word-wrap: break-word;
+  transition: background 0.3s, color 0.3s;
 }
 
 .nav {
-  background: #15151f;
+  background: var(--card);
   padding: 12px 5px;
   position: sticky;
   top: 0;
@@ -29,39 +45,35 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   gap: 15px;
+  border-bottom: 1px solid var(--border);
 }
 
 .nav a {
-  color: #a1a1aa;
+  color: var(--muted);
   text-decoration: none;
   font-size: 14px;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 15px;
+}
+
+.nav a.active {
+  background: var(--accent2);
+  color: white;
 }
 
 .section {
   padding: 40px 15px;
-  border-bottom: 1px solid #2a2a3a;
+  border-bottom: 1px solid var(--border);
+  display: none;
 }
 
-h1 {
-  font-size: 32px;
-  color: #00d4ff;
-  margin: 30px 0 15px 0;
-  padding: 0 10px;
-  line-height: 1.2;
-}
+.section.active { display: block; }
 
-h2 {
-  font-size: 26px;
-  color: #7b5cff;
-  margin-bottom: 20px;
-}
+h1 { font-size: 32px; color: var(--accent1); margin: 30px 0 15px 0; }
+h2 { font-size: 26px; color: var(--accent2); margin-bottom: 20px; }
 
-p {
-  font-size: 16px;
-  color: #a1a1aa;
-  padding: 0 10px;
-  margin-bottom: 25px;
-}
+p { font-size: 16px; color: var(--muted); padding: 0 10px; margin-bottom: 25px; }
 
 .button-group {
   display: flex;
@@ -72,156 +84,425 @@ p {
 }
 
 .btn {
-  background: #7b5cff;
+  background: var(--accent2);
   color: white;
   border: none;
   padding: 12px 20px;
   border-radius: 25px;
   font-size: 15px;
   cursor: pointer;
-  text-decoration: none;
-  display: inline-block;
   min-width: 120px;
+  transition: transform 0.1s;
 }
 
-.btn-green {
-  background: #22c55e;
-}
-
-.btn-gold {
-  background: #facc15;
-  color: black;
-  font-weight: bold;
-}
+.btn:active { transform: scale(0.95); }
+.btn-green { background: #22c55e; }
+.btn-gold { background: #facc15; color: black; font-weight: bold; }
+.btn-red { background: #ef4444; }
+.btn-blue { background: #3b82f6; }
 
 .box {
-  background: #15151f;
+  background: var(--card);
   padding: 25px 20px;
   margin: 20px auto;
   max-width: 600px;
   border-radius: 12px;
-  border: 1px solid #2a2a3a;
+  border: 1px solid var(--border);
   font-size: 18px;
   line-height: 1.5;
 }
 
-/* Make sure long words break */
-.box, h1, p {
-  overflow-wrap: break-word;
-  word-break: break-word;
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.stat {
+  background: var(--card);
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+
+.stat b { color: var(--accent1); font-size: 20px; }
+
+.theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--accent2);
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 200;
+}
+
+.fav-item {
+  text-align: left;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.badge {
+  display: inline-block;
+  background: var(--accent2);
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 12px;
+  margin: 5px;
+}
+
+#confetti {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 999;
 }
 </style>
 </head>
 <body>
 
+<canvas id="confetti"></canvas>
+
 <div class="nav">
-  <a href="#home">Home</a>
-  <a href="#encourage">Encourage</a>
-  <a href="#jokes">Jokes</a>
-  <a href="#sponsor">Sponsor</a>
+  <a class="nav-link active" onclick="showSection('home')">Home</a>
+  <a class="nav-link" onclick="showSection('encourage')">Encourage</a>
+  <a class="nav-link" onclick="showSection('jokes')">Jokes</a>
+  <a class="nav-link" onclick="showSection('challenge')">Challenge</a>
+  <a class="nav-link" onclick="showSection('favorites')">Favorites</a>
 </div>
 
-<div class="section" id="home">
+<div class="section active" id="home">
   <h1>Whirl Together</h1>
   <p>Connecting talent with opportunities</p>
+  
+  <div class="stats">
+    <div class="stat">
+      <b id="liveCount">1,247</b><br>
+      <span style="font-size:12px; color:var(--muted)">Online Now</span>
+    </div>
+    <div class="stat">
+      <b id="streakCount">0</b><br>
+      <span style="font-size:12px; color:var(--muted)">Day Streak</span>
+    </div>
+    <div class="stat">
+      <b id="xpCount">0</b><br>
+      <span style="font-size:12px; color:var(--muted)">XP</span>
+    </div>
+  </div>
+
   <div class="button-group">
     <a href="https://chat.whatsapp.com/J0pSLuqKUsTFxYoat4lJbj" class="btn">Join WhatsApp</a>
     <a href="https://www.tiktok.com/@whirltogetherforever" class="btn">TikTok</a>
     <a href="https://www.facebook.com/profile.php?id=61589247127526" class="btn">Facebook</a>
   </div>
+  
+  <div id="badges" style="margin-top: 20px;"></div>
 </div>
 
 <div class="section" id="encourage">
   <h2>Daily Encouragement 💪</h2>
-  <div class="box" id="quote">You can do it. One step at a time.</div>
+  <div class="box" id="quote">Loading...</div>
   <button class="btn btn-green" onclick="newQuote()">Get Random</button>
 </div>
 
 <div class="section" id="jokes">
   <h2>Quick Jokes 😂</h2>
-  <div class="box" id="joke">Why don't programmers like nature? Too many bugs.</div>
+  <div class="box" id="joke">Loading...</div>
   <button class="btn btn-green" onclick="newJoke()">Tell Me Another</button>
 </div>
 
-<div class="section" id="sponsor">
-  <h2>Become a Sponsor 🤝</h2>
-  <div class="box">
-    <p style="color: white; font-size: 18px;"><b>Are you a sponsor?</b></p>
-    <p>Send your info to the WhatsApp admin to partner with us.</p>
-    <a href="https://chat.whatsapp.com/J0pSLuqKUsTFxYoat4lJbj" class="btn btn-gold">Message Admin</a>
-  </div>
+<div class="section" id="challenge">
+  <h2>Daily Challenge 🔥</h2>
+  <div class="box" id="challengeBox">Loading challenge...</div>
+  <button class="btn btn-blue" onclick="newChallenge()">New Challenge</button>
+  <button class="btn btn-green" onclick="completeChallenge()">I Did It! +50 XP</button>
 </div>
 
+<div class="section" id="favorites">
+  <h2>Your Favorites ❤️</h2>
+  <div class="box" id="favList">No favorites yet. Save some quotes!</div>
+  <button class="btn btn-red" onclick="clearFavs()">Clear All</button>
+</div>
+
+<button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+
 <script>
-var quotes = [
-  "You can do it. One step at a time.",
-  "Your only limit is your mind. Keep pushing.",
-  "Every expert was once a beginner. Start now.",
-  "You're stronger than you think. Don't quit.",
-  "Small progress is still progress. Celebrate it.",
-  "Believe in yourself. Others already do.",
-  "The hardest part is starting. You've got this.",
-  "Failure is just practice for success.",
-  "Your future self will thank you for trying today.",
-  "Keep going. The world needs what only you can do."
-];
+// ========== SAFE INIT ==========
+try {
+  var quotes = [
+    "You can do it. One step at a time.",
+    "Your only limit is your mind. Keep pushing.",
+    "Every expert was once a beginner. Start now.",
+    "You're stronger than you think. Don't quit.",
+    "Small progress is still progress. Celebrate it."
+  ];
 
-var jokes = [
-  "Why don't programmers like nature? Too many bugs.",
-  "I told my computer I needed a break. Now it sends me KitKat ads.",
-  "Why did the scarecrow win an award? Outstanding in his field.",
-  "I'm on a seafood diet. I see food, and I eat it.",
-  "Why don't skeletons fight? They don't have the guts.",
-  "What do you call fake spaghetti? An impasta.",
-  "Why did the math book look sad? Too many problems.",
-  "I asked about paranoia books. She whispered 'They're behind you.'",
-  "Why can't your nose be 12 inches? Then it would be a foot.",
-  "I would tell an elevator joke, but it's uplifting."
-];
+  var jokes = [
+    "Why don't programmers like nature? Too many bugs.",
+    "I told my computer I needed a break. Now it sends me KitKat ads.",
+    "Why did the scarecrow win an award? Outstanding in his field.",
+    "I'm on a seafood diet. I see food, and I eat it."
+  ];
 
-function newQuote() {
-  var i = Math.floor(Math.random() * quotes.length);
-  document.getElementById('quote').innerHTML = quotes[i];
+  var challenges = [
+    "Send one voice note to a friend today",
+    "Learn 1 new CSS property",
+    "Post something positive on WhatsApp status",
+    "Help someone without expecting anything back",
+    "Drink 2 liters of water today"
+  ];
+
+  // Load saved data
+  loadData();
+  initTheme();
+  newQuote();
+  newJoke();
+  newChallenge();
+  updateStats();
+  setInterval(updateLiveCount, 3000);
+  
+} catch(e) {
+  console.log("Init error:", e);
 }
 
+// ========== SECTION SWITCHING ==========
+function showSection(id) {
+  try {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.target.classList.add('active');
+    if (id === 'favorites') updateFavoritesView();
+  } catch(e) { console.log(e); }
+}
+
+// ========== QUOTES ==========
+function newQuote() {
+  try {
+    fetch('https://api.quotable.io/random?maxLength=120')
+    .then(res => res.json())
+    .then(data => updateQuoteBox(data.content))
+    .catch(() => {
+        let q = quotes[Math.floor(Math.random() * quotes.length)];
+        updateQuoteBox(q);
+    });
+    addXP(10);
+    updateStreak();
+  } catch(e) { console.log(e); }
+}
+
+function updateQuoteBox(q) {
+  try {
+    let safeQ = q.replace(/'/g, "\\'");
+    document.getElementById('quote').innerHTML =
+      `"${q}"<br>
+      <button class="btn" style="margin-top:10px; padding:6px 12px; font-size:13px;" onclick="saveFav('${safeQ}')">❤️ Save</button>
+      <button class="btn btn-blue" style="margin-top:10px; padding:6px 12px; font-size:13px;" onclick="shareQuote('${safeQ}')">📤 Share</button>`;
+  } catch(e) { console.log(e); }
+}
+
+// ========== JOKES ==========
 function newJoke() {
-  var i = Math.floor(Math.random() * jokes.length);
-  document.getElementById('joke').innerHTML = jokes[i];
+  try {
+    let i = Math.floor(Math.random() * jokes.length);
+    document.getElementById('joke').innerHTML = jokes[i];
+    addXP(5);
+  } catch(e) { console.log(e); }
+}
+
+// ========== CHALLENGES ==========
+function newChallenge() {
+  try {
+    let i = Math.floor(Math.random() * challenges.length);
+    document.getElementById('challengeBox').innerHTML = challenges[i];
+  } catch(e) { console.log(e); }
+}
+
+function completeChallenge() {
+  try {
+    addXP(50);
+    fireConfetti();
+    alert('Nice! +50 XP earned! 🔥');
+    newChallenge();
+  } catch(e) { console.log(e); }
+}
+
+// ========== FAVORITES ==========
+function saveFav(q) {
+  try {
+    let favorites = JSON.parse(localStorage.getItem('favQuotes') || '[]');
+    if (!favorites.includes(q)) {
+      favorites.push(q);
+      localStorage.setItem('favQuotes', JSON.stringify(favorites));
+      alert('Saved to Favorites!');
+      updateFavoritesView();
+    } else {
+      alert('Already in favorites!');
+    }
+  } catch(e) { console.log(e); }
+}
+
+function updateFavoritesView() {
+  try {
+    let favorites = JSON.parse(localStorage.getItem('favQuotes') || '[]');
+    if (favorites.length === 0) {
+      document.getElementById('favList').innerHTML = "No favorites yet. Save some quotes!";
+      return;
+    }
+    let html = favorites.map((q, i) => 
+      `<div class="fav-item">${i+1}. "${q}"</div>`
+    ).join('');
+    document.getElementById('favList').innerHTML = html;
+  } catch(e) { console.log(e); }
+}
+
+function clearFavs() {
+  try {
+    if (confirm('Clear all favorites?')) {
+      localStorage.removeItem('favQuotes');
+      updateFavoritesView();
+    }
+  } catch(e) { console.log(e); }
+}
+
+// ========== STREAK & XP SYSTEM ==========
+function updateStreak() {
+  try {
+    let today = new Date().toDateString();
+    let lastVisit = localStorage.getItem('lastVisit');
+    let streak = parseInt(localStorage.getItem('streak') || '0');
+    
+    if (lastVisit !== today) {
+      if (lastVisit === new Date(Date.now() - 86400000).toDateString()) {
+        streak++;
+      } else if (lastVisit !== null) {
+        streak = 1;
+      } else {
+        streak = 1;
+      }
+      localStorage.setItem('streak', streak);
+      localStorage.setItem('lastVisit', today);
+    }
+    document.getElementById('streakCount').textContent = streak;
+    updateBadges(streak);
+  } catch(e) { console.log(e); }
+}
+
+function addXP(amount) {
+  try {
+    let xp = parseInt(localStorage.getItem('xp') || '0');
+    xp += amount;
+    localStorage.setItem('xp', xp);
+    document.getElementById('xpCount').textContent = xp;
+  } catch(e) { console.log(e); }
+}
+
+function updateStats() {
+  try {
+    document.getElementById('streakCount').textContent = localStorage.getItem('streak') || '0';
+    document.getElementById('xpCount').textContent = localStorage.getItem('xp') || '0';
+  } catch(e) { console.log(e); }
+}
+
+function updateBadges(streak) {
+  try {
+    let badges = '';
+    if (streak >= 3) badges += '<span class="badge">3 Day Streak 🔥</span>';
+    if (streak >= 7) badges += '<span class="badge">Week Warrior ⚡</span>';
+    if (streak >= 30) badges += '<span class="badge">Monthly Beast 👑</span>';
+    document.getElementById('badges').innerHTML = badges;
+  } catch(e) { console.log(e); }
+}
+
+// ========== LIVE COUNTER ==========
+function updateLiveCount() {
+  try {
+    let count = Math.floor(1200 + Math.random() * 200);
+    document.getElementById('liveCount').textContent = count.toLocaleString();
+  } catch(e) { console.log(e); }
+}
+
+// ========== SHARE ==========
+function shareQuote(q) {
+  try {
+    if (navigator.share) {
+      navigator.share({text: q + "\n\n- Whirl Together"});
+    } else {
+      navigator.clipboard.writeText(q);
+      alert('Quote copied to clipboard!');
+    }
+  } catch(e) { console.log(e); }
+}
+
+// ========== THEME ==========
+function toggleTheme() {
+  try {
+    let current = document.documentElement.getAttribute('data-theme');
+    let newTheme = current === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+  } catch(e) { console.log(e); }
+}
+
+function initTheme() {
+  try {
+    let savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  } catch(e) { console.log(e); }
+}
+
+// ========== CONFETTI ==========
+function fireConfetti() {
+  try {
+    let canvas = document.getElementById('confetti');
+    let ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    let pieces = [];
+    for(let i=0; i<100; i++) {
+      pieces.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height - canvas.height,
+        r: Math.random() * 4 + 1,
+        d: Math.random() * 50
+      });
+    }
+    
+    function draw() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      ctx.fillStyle = '#7b5cff';
+      pieces.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI*2, false);
+        ctx.fill();
+        p.y += Math.cos(p.d) + 1 + p.r/2;
+        p.x += Math.sin(0);
+      });
+    }
+    
+    let interval = setInterval(draw, 33);
+    setTimeout(() => clearInterval(interval), 2000);
+  } catch(e) { console.log(e); }
+}
+
+// ========== LOAD DATA ==========
+function loadData() {
+  try {
+    updateFavoritesView();
+  } catch(e) { console.log(e); }
 }
 </script>
 
 </body>
   </html>
-<script>
-// Load from API + fallback to local
-let quotes = [...]; // keep your 10 as fallback
-let favorites = JSON.parse(localStorage.getItem('favQuotes') || '[]');
-
-async function newQuote() {
-  let q = "Loading...";
-  try {
-    let res = await fetch('https://api.adviceslip.com/advice');
-    let data = await res.json();
-    q = data.slip.advice;
-  } catch {
-    q = quotes[Math.floor(Math.random() * quotes.length)];
-  }
-  document.getElementById('quote').innerHTML = q + 
-    `<br><button onclick="saveFav('${q}')">❤️ Save</button>`;
-}
-
-function saveFav(q) {
-  if (!favorites.includes(q)) {
-    favorites.push(q);
-    localStorage.setItem('favQuotes', JSON.stringify(favorites));
-    alert('Saved to Favorites!');
-  }
-}
-
-function showFavorites() {
-  document.getElementById('quote').innerHTML = 
-    favorites.length ? favorites.join('<hr>') : "No favorites yet.";
-}
-</script>
-
-<button class="btn" onclick="showFavorites()">My Favorites</button>
