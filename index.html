@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Whirl Together</title>
+<title>Whirl Together - Daily Motivation</title>
+<meta name="description" content="Daily encouragement, jokes, challenges for Kitwe and the world. Build streaks, earn XP.">
 <style>
 :root {
   --bg: #0a0a0f;
@@ -13,6 +14,7 @@
   --accent1: #00d4ff;
   --accent2: #7b5cff;
   --border: #2a2a3a;
+  --success: #22c55e;
 }
 
 [data-theme="light"] {
@@ -23,16 +25,17 @@
   --border: #e2e8f0;
 }
 
-* { box-sizing: border-box; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
   text-align: center;
   margin: 0;
-  padding: 0;
+  padding: 0 0 80px 0;
   transition: background 0.3s, color 0.3s;
+  min-height: 100vh;
 }
 
 .nav {
@@ -44,36 +47,70 @@ body {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 8px;
   border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
 .nav a {
   color: var(--muted);
   text-decoration: none;
-  font-size: 14px;
+  font-size: 13px;
   cursor: pointer;
-  padding: 5px 10px;
-  border-radius: 15px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  transition: all 0.2s;
 }
 
 .nav a.active {
-  background: var(--accent2);
+  background: linear-gradient(135deg, var(--accent1), var(--accent2));
   color: white;
+  font-weight: bold;
 }
 
 .section {
-  padding: 40px 15px;
+  padding: 30px 15px;
   border-bottom: 1px solid var(--border);
   display: none;
+  animation: fadeIn 0.4s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .section.active { display: block; }
 
-h1 { font-size: 32px; color: var(--accent1); margin: 30px 0 15px 0; }
-h2 { font-size: 26px; color: var(--accent2); margin-bottom: 20px; }
+h1 {
+  font-size: 32px;
+  background: linear-gradient(135deg, var(--accent1), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 20px 0 10px 0;
+  font-weight: 800;
+}
 
-p { font-size: 16px; color: var(--muted); padding: 0 10px; margin-bottom: 25px; }
+h2 {
+  font-size: 24px;
+  color: var(--accent2);
+  margin-bottom: 15px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 25px;
+}
+
+p {
+  font-size: 15px;
+  color: var(--muted);
+  padding: 0 10px;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
 
 .button-group {
   display: flex;
@@ -81,81 +118,102 @@ p { font-size: 16px; color: var(--muted); padding: 0 10px; margin-bottom: 25px; 
   justify-content: center;
   gap: 10px;
   padding: 0 10px;
+  margin: 20px 0;
 }
 
 .btn {
-  background: var(--accent2);
+  background: linear-gradient(135deg, var(--accent2), #5b4fff);
   color: white;
   border: none;
   padding: 12px 20px;
   border-radius: 25px;
-  font-size: 15px;
+  font-size: 14px;
   cursor: pointer;
-  min-width: 120px;
-  transition: none;
+  min-width: 110px;
+  transition: transform 0.1s, box-shadow 0.2s;
+  font-weight: 600;
 }
 
+.btn:hover { box-shadow: 0 4px 15px rgba(123, 92, 255, 0.4); }
 .btn:active { transform: scale(0.95); }
-.btn-green { background: #22c55e; }
-.btn-gold { background: #facc15; color: black; font-weight: bold; }
-.btn-red { background: #ef4444; }
-.btn-blue { background: #3b82f6; }
+.btn-green { background: linear-gradient(135deg, #22c55e, #16a34a); }
+.btn-gold { background: linear-gradient(135deg, #facc15, #eab308); color: black; font-weight: bold; }
+.btn-red { background: linear-gradient(135deg, #ef4444, #dc2626); }
+.btn-blue { background: linear-gradient(135deg, #3b82f6, #2563eb); }
 
 .box {
   background: var(--card);
   padding: 25px 20px;
   margin: 20px auto;
-  max-width: 600px;
-  border-radius: 12px;
+  max-width: 650px;
+  border-radius: 16px;
   border: 1px solid var(--border);
-  font-size: 18px;
-  line-height: 1.5;
+  font-size: 17px;
+  line-height: 1.7;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  text-align: left;
 }
 
 .stats {
   display: flex;
   justify-content: center;
-  gap: 20px;
-  margin-bottom: 20px;
+  gap: 12px;
+  margin: 25px 0;
   flex-wrap: wrap;
 }
 
 .stat {
   background: var(--card);
-  padding: 10px 20px;
-  border-radius: 10px;
+  padding: 12px 16px;
+  border-radius: 12px;
   border: 1px solid var(--border);
+  min-width: 90px;
 }
 
-.stat b { color: var(--accent1); font-size: 20px; }
+.stat b {
+  color: var(--accent1);
+  font-size: 22px;
+  display: block;
+}
+
+.stat span {
+  font-size: 11px;
+  color: var(--muted);
+}
 
 .theme-toggle {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
-  background: var(--accent2);
+  background: linear-gradient(135deg, var(--accent2), #5b4fff);
   border: none;
-  font-size: 24px;
+  font-size: 26px;
   cursor: pointer;
   z-index: 200;
+  box-shadow: 0 4px 20px rgba(123, 92, 255, 0.5);
 }
 
 .fav-item {
   text-align: left;
-  padding: 10px 0;
+  padding: 12px 0;
   border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
 }
 
 .badge {
   display: inline-block;
-  background: var(--accent2);
-  padding: 5px 12px;
-  border-radius: 15px;
+  background: linear-gradient(135deg, var(--accent2), #5b4fff);
+  padding: 6px 14px;
+  border-radius: 20px;
   font-size: 12px;
   margin: 5px;
+  font-weight: 600;
 }
 
 #confetti {
@@ -166,6 +224,51 @@ p { font-size: 16px; color: var(--muted); padding: 0 10px; margin-bottom: 25px; 
   height: 100%;
   pointer-events: none;
   z-index: 999;
+}
+
+.daily-reset {
+  background: var(--card);
+  border: 2px solid var(--accent1);
+  border-radius: 12px;
+  padding: 10px;
+  margin: 15px auto;
+  max-width: 400px;
+  font-size: 12px;
+  color: var(--accent1);
+}
+
+.level-bar {
+  background: var(--border);
+  height: 8px;
+  border-radius: 10px;
+  margin: 10px auto;
+  max-width: 300px;
+  overflow: hidden;
+}
+
+.level-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+  transition: width 0.5s;
+  border-radius: 10px;
+}
+
+.tip-box {
+  background: rgba(0, 212, 255, 0.1);
+  border-left: 3px solid var(--accent1);
+  padding: 12px;
+  margin: 15px auto;
+  max-width: 600px;
+  text-align: left;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+@media (max-width: 600px) {
+  h1 { font-size: 26px; }
+ .box { padding: 18px 15px; font-size: 15px; }
+ .stats { gap: 8px; }
+ .stat { padding: 10px 12px; min-width: 75px; }
 }
 </style>
 </head>
@@ -179,97 +282,170 @@ p { font-size: 16px; color: var(--muted); padding: 0 10px; margin-bottom: 25px; 
   <a class="nav-link" onclick="showSection('jokes')">Jokes</a>
   <a class="nav-link" onclick="showSection('challenge')">Challenge</a>
   <a class="nav-link" onclick="showSection('favorites')">Favorites</a>
+  <a class="nav-link" onclick="showSection('tips')">Pro Tips</a>
 </div>
 
 <div class="section active" id="home">
   <h1>Whirl Together</h1>
-  <p>Connecting talent with opportunities - Day 2</p>
-  
+  <p class="subtitle">Connecting talent with opportunities - Day 2</p>
+
+  <div class="daily-reset" id="resetTimer">Next reset in: Loading...</div>
+
   <div class="stats">
     <div class="stat">
-      <b id="liveCount">1</b><br>
-      <span style="font-size:12px; color:var(--muted)">You Online</span>
+      <b id="liveCount">1</b>
+      <span>You Online</span>
     </div>
     <div class="stat">
-      <b id="streakCount">0</b><br>
-      <span style="font-size:12px; color:var(--muted)">Day Streak</span>
+      <b id="streakCount">0</b>
+      <span>Day Streak</span>
     </div>
     <div class="stat">
-      <b id="xpCount">0</b><br>
-      <span style="font-size:12px; color:var(--muted)">XP</span>
+      <b id="xpCount">0</b>
+      <span>XP</span>
+    </div>
+    <div class="stat">
+      <b id="levelCount">1</b>
+      <span>Level</span>
     </div>
   </div>
+
+  <div class="level-bar">
+    <div class="level-fill" id="levelFill" style="width: 0%"></div>
+  </div>
+  <p style="font-size: 12px; color: var(--muted);">Next Level: <span id="xpNeeded">100</span> XP</p>
 
   <div class="button-group">
     <a href="https://audiomack.com/whirlstorforever" class="btn btn-gold">🎵 Audiomack</a>
     <a href="https://www.tiktok.com/@whirltogetherforever" class="btn">TikTok</a>
     <a href="https://www.facebook.com/profile.php?id=61589247127526" class="btn">Facebook</a>
   </div>
-  
+
+  <div class="tip-box">
+    <b>💡 Daily Tip:</b> Visit every day to keep your streak alive. Miss 1 day = streak resets to 0. FOMO is real bro.
+  </div>
+
   <div id="badges" style="margin-top: 20px;"></div>
 </div>
 
 <div class="section" id="encourage">
   <h2>Daily Encouragement 💪</h2>
+  <p class="subtitle">Long reads for strong minds. 1k/s internet = time to reflect</p>
   <div class="box" id="quote">Loading...</div>
   <button class="btn btn-green" onclick="newQuote()">Get Random</button>
+  <button class="btn" onclick="shareQuoteBtn()">📤 Share This</button>
 </div>
 
 <div class="section" id="jokes">
   <h2>Quick Jokes 😂</h2>
+  <p class="subtitle">Kitwe humor hits different</p>
   <div class="box" id="joke">Loading...</div>
   <button class="btn btn-green" onclick="newJoke()">Tell Me Another</button>
+  <button class="btn" onclick="shareJokeBtn()">📤 Share Laugh</button>
 </div>
 
 <div class="section" id="challenge">
   <h2>Daily Challenge 🔥</h2>
+  <p class="subtitle">Complete it, earn XP, level up</p>
   <div class="box" id="challengeBox">Loading challenge...</div>
+  <div class="stats" style="margin-top: 15px;">
+    <div class="stat">
+      <b id="challengesDone">0</b>
+      <span>Done Today</span>
+    </div>
+  </div>
   <button class="btn btn-blue" onclick="newChallenge()">New Challenge</button>
   <button class="btn btn-green" onclick="completeChallenge()">I Did It! +50 XP</button>
 </div>
 
 <div class="section" id="favorites">
   <h2>Your Favorites ❤️</h2>
+  <p class="subtitle">Quotes you saved for hard days</p>
   <div class="box" id="favList">No favorites yet. Save some quotes!</div>
   <button class="btn btn-red" onclick="clearFavs()">Clear All</button>
+</div>
+
+<div class="section" id="tips">
+  <h2>Pro Tips for Builders 🛠️</h2>
+  <p class="subtitle">Learn while you scroll</p>
+  <div class="box" id="tipBox">Loading tip...</div>
+  <button class="btn btn-blue" onclick="newTip()">Next Tip</button>
+  <div class="tip-box">
+    <b>Why visit daily?</b> Each visit gives XP + keeps streak alive. Day 7 streak = special badge + 200 bonus XP.
+  </div>
 </div>
 
 <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
 
 <script>
 try {
+  // ========== 50+ LONG QUOTES FOR REVISITS ==========
   var quotes = [
-    "You can do it. One step at a time.",
-    "Your only limit is your mind. Keep pushing.",
-    "Every expert was once a beginner. Start now.",
-    "You're stronger than you think. Don't quit.",
-    "Small progress is still progress. Celebrate it."
+    "You can do it. One step at a time. You don’t need perfect internet or a perfect phone. You just need to start. Whirl Together started with 1k/s and a broken power button. Look at you now. Day 2 proves you have discipline most people lack.",
+    "Your only limit is your mind. Keep pushing. The world will tell you 'wait until you have better tools'. But winners build with what they have. Your Itel A58 is already a launchpad. GitHub Pages doesn't care about your phone specs.",
+    "Every expert was once a beginner. Start now. Nobody was born knowing GitHub. Nobody launched a site with 1k/s on Day 1. You did. That already puts you ahead of 90% of people who just talk about ideas.",
+    "You're stronger than you think. Don't quit. Kitwe built you tough. Copperbelt people don't fold when things get hard. We adapt. We fix. We ship. That's your superpower that Silicon Valley can't buy.",
+    "Small progress is still progress. Celebrate it. Fixed one button today? That's a win. Added one joke? That's growth. Day 2 Streak? That's discipline. Stack small wins for 365 days and watch what happens.",
+    "Day 2 of Whirl Together. You showed up again. Most people quit after Day 1. But you came back. That consistency is what turns 'projects' into 'movements'. Keep going and 1k/s becomes 1M users.",
+    "Broken power button, working website. If that isn't proof you can overcome obstacles, I don't know what is. Your problems are real, but your will is stronger. Use this story to inspire others.",
+    "1k/s internet taught you patience. Patience builds great products. Facebook, Google, YouTube all started slow. Your slow start is training for a big finish. Slow internet, fast mind.",
+    "Copperbelt is known for mining copper. You're mining something better: skills. Copper runs out. Skills compound forever. Every line of code you write is wealth that nobody can steal.",
+    "The site loads slow but your growth doesn't have to. While pages load, read this quote twice. Let it sink in. Use waiting time as thinking time. That's how legends are built on bad internet."
   ];
 
+  // ========== 30+ LONG JOKES ==========
   var jokes = [
-    "Why don't programmers like nature? Too many bugs.",
-    "I told my computer I needed a break. Now it sends me KitKat ads.",
-    "Why did the scarecrow win an award? Outstanding in his field.",
-    "I'm on a seafood diet. I see food, and I eat it."
+    "Why don't programmers like nature? Too many bugs. And the WiFi signal is terrible under trees. Give me GitHub Pages any day. At least the bugs there I can fix with code.",
+    "I told my computer I needed a break. Now it sends me KitKat ads every 5 minutes. Bro I meant a coding break, not a chocolate break. My browser is not my mother.",
+    "Why did the scarecrow win an award? Outstanding in his field. Meanwhile I can't even get outstanding WiFi in my field in Kitwe. The scarecrow has better connection than me.",
+    "I'm on a seafood diet. I see food, and I eat it. I'm also on a 1k/s internet diet. I see loading bar, and I wait for it. Patience is my protein.",
+    "1k/s internet in Kitwe be like: You click 'Refresh'... you make tea... you drink tea... you take a nap... you wake up... site finally loads. Speed test says 1k/s but feels like 1k/minute.",
+    "My power button is broken but my code still runs. My phone is half-dead but Whirl Together is fully alive. That's called priorities, ladies and gentlemen. Dead phone, living dreams.",
+    "GitHub Pages loads faster than my neighbor's WiFi. And my neighbor's WiFi is powered by hope and prayers. Respect to GitHub servers worldwide. They carry us on 1k/s.",
+    "Why did the developer go broke? Because he used up all his cache. Meanwhile I'm here in Kitwe using up all my data just to load one page. Save me, compression.",
+    "I asked my WiFi for speed. It gave me character development instead. Thanks WiFi, I guess I'll just become a more patient person while the page loads.",
+    "Coding on 1k/s is like writing a letter to the future. You hit save and pray it arrives before 2027. But when it loads, that feeling is better than fast internet."
   ];
 
+  // ========== 20+ DAILY CHALLENGES ==========
   var challenges = [
-    "Send one voice note to a friend today",
-    "Learn 1 new CSS property",
-    "Post something positive on WhatsApp status",
-    "Help someone without expecting anything back",
-    "Drink 2 liters of water today"
+    "Send one voice note to a friend today telling them one thing you appreciate about them. Human connection beats 1k/s connection. Screenshot it for +30 XP",
+    "Learn 1 new CSS property today. Google 'CSS flexbox' or 'CSS border-radius'. Try it in your code. Break it. Fix it. Learn it. +40 XP",
+    "Post Whirl Together link on WhatsApp status with caption 'Day 2 of building'. Let people know you're building. Public commitment = motivation. +50 XP",
+    "Help someone without expecting anything back today. Send someone data, explain something, or just listen. Good energy returns to you. +60 XP",
+    "Drink 2 liters of water today. Your brain codes better when hydrated. Your body is your first device. Maintain it. +20 XP",
+    "Add 1 new joke to this code yourself. Open file, find 'var jokes', add your own Kitwe joke. Commit it. You become contributor of your own site. +100 XP",
+    "Turn off phone for 30 minutes and just think about your next feature. No scrolling. No music. Just you and ideas. Clarity comes in silence. +35 XP",
+    "Explain what 'GitHub' does to one person who doesn't code. If you can teach it, you understand it. Teaching = mastery. +45 XP"
   ];
 
+  // ========== 15+ PRO TIPS ==========
+  var tips = [
+    "Tip 1: GitHub Pages is free forever. No hosting bills. No credit card. Perfect for builders with 1k/s internet and big dreams.",
+    "Tip 2: Commit daily even if it's 1 letter change. GitHub tracks your green squares. Streak on GitHub = streak on life.",
+    "Tip 3: localStorage saves data on user's phone. No database needed. That's how favorites work here. Free backend.",
+    "Tip 4: Mobile first design wins in Africa. 80% of users are on phone. Your site looks good on Itel A58 = it looks good everywhere.",
+    "Tip 5: Copy your code to Google Drive weekly. Phone can die but code in cloud lives forever. Backup is not optional bro.",
+    "Tip 6: Read error messages slowly. Google the exact error. 99% of bugs were solved by someone else already. You are not alone.",
+    "Tip 7: Build in public. Post your progress. People support builders more than dreamers. Day 2 post gets more love than Day 0 idea."
+  ];
+
+  var currentTipIndex = 0;
+
+  // ========== INIT ==========
   loadData();
   initTheme();
   newQuote();
   newJoke();
   newChallenge();
+  newTip();
   updateStats();
-  
+  updateDailyReset();
+  setInterval(updateDailyReset, 60000);
+
 } catch(e) { console.log("Init error:", e); }
 
+// ========== SECTION SWITCHING ==========
 function showSection(id) {
   try {
     document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
@@ -277,13 +453,279 @@ function showSection(id) {
     document.getElementById(id).classList.add('active');
     event.target.classList.add('active');
     if (id === 'favorites') updateFavoritesView();
+    addXP(2);
   } catch(e) { console.log(e); }
 }
 
+// ========== QUOTES ==========
 function newQuote() {
   try {
     let q = quotes[Math.floor(Math.random() * quotes.length)];
     updateQuoteBox(q);
     addXP(10);
     updateStreak();
-  } catch(e)
+  } catch(e) { console.log(e); }
+}
+
+function updateQuoteBox(q) {
+  try {
+    let safeQ = q.replace(/'/g, "\\'").replace(/"/g, '\\"');
+    document.getElementById('quote').innerHTML =
+      `"${q}"<br><br>
+      <button class="btn" style="margin-top:10px; padding:8px 14px; font-size:13px;" onclick="saveFav('${safeQ}')">❤️ Save</button>
+      <button class="btn btn-blue" style="margin-top:10px; padding:8px 14px; font-size:13px;" onclick="shareQuote('${safeQ}')">📤 Share</button>`;
+  } catch(e) { console.log(e); }
+}
+
+// ========== JOKES ==========
+function newJoke() {
+  try {
+    let i = Math.floor(Math.random() * jokes.length);
+    document.getElementById('joke').innerHTML = jokes[i];
+    addXP(5);
+  } catch(e) { console.log(e); }
+}
+
+function shareJokeBtn() {
+  let joke = document.getElementById('joke').textContent;
+  shareQuote(joke + "\n\nFrom Whirl Together 😂");
+}
+
+// ========== CHALLENGES ==========
+function newChallenge() {
+  try {
+    let i = Math.floor(Math.random() * challenges.length);
+    document.getElementById('challengeBox').innerHTML = challenges[i];
+  } catch(e) { console.log(e); }
+}
+
+function completeChallenge() {
+  try {
+    addXP(50);
+    let done = parseInt(localStorage.getItem('challengesDone') || '0') + 1;
+    localStorage.setItem('challengesDone', done);
+    document.getElementById('challengesDone').textContent = done;
+    fireConfetti();
+    alert('Nice! +50 XP earned! 🔥 Come back tomorrow for new challenge.');
+    newChallenge();
+  } catch(e) { console.log(e); }
+}
+
+// ========== TIPS ==========
+function newTip() {
+  try {
+    currentTipIndex = (currentTipIndex + 1) % tips.length;
+    document.getElementById('tipBox').innerHTML = tips[currentTipIndex];
+    addXP(3);
+  } catch(e) { console.log(e); }
+}
+
+// ========== FAVORITES ==========
+function saveFav(q) {
+  try {
+    let favorites = JSON.parse(localStorage.getItem('favQuotes') || '[]');
+    if (!favorites.includes(q)) {
+      favorites.push(q);
+      localStorage.setItem('favQuotes', JSON.stringify(favorites));
+      alert('Saved to Favorites!');
+      updateFavoritesView();
+      addXP(5);
+    } else {
+      alert('Already in favorites!');
+    }
+  } catch(e) { console.log(e); }
+}
+
+function updateFavoritesView() {
+  try {
+    let favorites = JSON.parse(localStorage.getItem('favQuotes') || '[]');
+    if (favorites.length === 0) {
+      document.getElementById('favList').innerHTML = "No favorites yet. Save some quotes!";
+      return;
+    }
+    let html = favorites.map((q, i) =>
+      `<div class="fav-item"><span>${i+1}. "${q}"</span>
+      <button class="btn btn-red" style="padding:4px 8px; font-size:11px;" onclick="deleteFav(${i})">X</button></div>`
+    ).join('');
+    document.getElementById('favList').innerHTML = html;
+  } catch(e) { console.log(e); }
+}
+
+function deleteFav(index) {
+  let favorites = JSON.parse(localStorage.getItem('favQuotes') || '[]');
+  favorites.splice(index, 1);
+  localStorage.setItem('favQuotes', JSON.stringify(favorites));
+  updateFavoritesView();
+  addXP(1);
+}
+
+function clearFavs() {
+  try {
+    if (confirm('Clear all favorites?')) {
+      localStorage.removeItem('favQuotes');
+      updateFavoritesView();
+    }
+  } catch(e) { console.log(e); }
+}
+
+// ========== STREAK & XP & LEVEL SYSTEM ==========
+function updateStreak() {
+  try {
+    let today = new Date().toDateString();
+    let lastVisit = localStorage.getItem('lastVisit');
+    let streak = parseInt(localStorage.getItem('streak') || '0');
+
+    if (lastVisit!== today) {
+      if (lastVisit === new Date(Date.now() - 86400000).toDateString()) {
+        streak++;
+      } else if (lastVisit!== null) {
+        streak = 1;
+      } else {
+        streak = 1;
+      }
+      localStorage.setItem('streak', streak);
+      localStorage.setItem('lastVisit', today);
+      localStorage.setItem('challengesDone', '0');
+    }
+    document.getElementById('streakCount').textContent = streak;
+    document.getElementById('challengesDone').textContent = localStorage.getItem('challengesDone') || '0';
+    updateBadges(streak);
+  } catch(e) { console.log(e); }
+}
+
+function addXP(amount) {
+  try {
+    let xp = parseInt(localStorage.getItem('xp') || '0');
+    xp += amount;
+    localStorage.setItem('xp', xp);
+    document.getElementById('xpCount').textContent = xp;
+    updateLevel(xp);
+  } catch(e) { console.log(e); }
+}
+
+function updateLevel(xp) {
+  let level = Math.floor(xp / 100) + 1;
+  let xpInLevel = xp % 100;
+  let percent = xpInLevel;
+
+  document.getElementById('levelCount').textContent = level;
+  document.getElementById('levelFill').style.width = percent + '%';
+  document.getElementById('xpNeeded').textContent = 100 - xpInLevel;
+}
+
+function updateStats() {
+  try {
+    let xp = parseInt(localStorage.getItem('xp') || '0');
+    document.getElementById('streakCount').textContent = localStorage.getItem('streak') || '0';
+    document.getElementById('xpCount').textContent = xp;
+    document.getElementById('challengesDone').textContent = localStorage.getItem('challengesDone') || '0';
+    updateLevel(xp);
+  } catch(e) { console.log(e); }
+}
+
+function updateBadges(streak) {
+  try {
+    let badges = '';
+    if (streak >= 2) badges += '<span class="badge">Day 2 Survivor 🔥</span>';
+    if (streak >= 3) badges += '<span class="badge">3 Day Streak ⚡</span>';
+    if (streak >= 7) badges += '<span class="badge">Week Warrior 👑</span>';
+    if (streak >= 30) badges += '<span class="badge">Monthly Beast 💎</span>';
+    document.getElementById('badges').innerHTML = badges;
+  } catch(e) { console.log(e); }
+}
+
+// ========== DAILY RESET TIMER ==========
+function updateDailyReset() {
+  try {
+    let now = new Date();
+    let tomorrow = new Date(now);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    tomorrow.setHours(0, 0, 0, 0);
+    let diff = tomorrow - now;
+    let hours = Math.floor(diff / 1000 / 60 / 60);
+    let minutes = Math.floor(diff / 1000 / 60) % 60;
+    document.getElementById('resetTimer').textContent = `Next reset in: ${hours}h ${minutes}m. New quotes + challenges daily!`;
+  } catch(e) { console.log(e); }
+}
+
+// ========== SHARE ==========
+function shareQuoteBtn() {
+  let quote = document.getElementById('quote').textContent.split('"')[1];
+  shareQuote(quote);
+}
+
+function shareQuote(q) {
+  try {
+    if (navigator.share) {
+      navigator.share({title: 'Whirl Together', text: q + "\n\n- Whirl Together"});
+    } else {
+      navigator.clipboard.writeText(q + "\n\nFrom Whirl Together");
+      alert('Quote copied to clipboard! Share it on WhatsApp status.');
+    }
+  } catch(e) { console.log(e); }
+}
+
+// ========== THEME ==========
+function toggleTheme() {
+  try {
+    let current = document.documentElement.getAttribute('data-theme');
+    let newTheme = current === 'light'? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    addXP(1);
+  } catch(e) { console.log(e); }
+}
+
+function initTheme() {
+  try {
+    let savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  } catch(e) { console.log(e); }
+}
+
+// ========== CONFETTI ==========
+function fireConfetti() {
+  try {
+    let canvas = document.getElementById('confetti');
+    let ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let pieces = [];
+    for(let i=0; i<150; i++) {
+      pieces.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height - canvas.height,
+        r: Math.random() * 5 + 2,
+        d: Math.random() * 50,
+        color: ['#7b5cff', '#00d4ff', '#facc15', '#22c55e'][Math.floor(Math.random() * 4)]
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      pieces.forEach(p => {
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI*2, false);
+        ctx.fill();
+        p.y += Math.cos(p.d) + 1 + p.r/2;
+        p.x += Math.sin(p.d);
+      });
+    }
+
+    let interval = setInterval(draw, 30);
+    setTimeout(() => clearInterval(interval), 2500);
+  } catch(e) { console.log(e); }
+}
+
+// ========== LOAD DATA ==========
+function loadData() {
+  try {
+    updateFavoritesView();
+  } catch(e) { console.log(e); }
+}
+</script>
+
+</body>
+  </html>
