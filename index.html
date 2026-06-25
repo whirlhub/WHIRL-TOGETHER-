@@ -92,7 +92,7 @@ p { font-size: 16px; color: var(--muted); padding: 0 10px; margin-bottom: 25px; 
   font-size: 15px;
   cursor: pointer;
   min-width: 120px;
-  transition: transform 0.1s;
+  transition: none;
 }
 
 .btn:active { transform: scale(0.95); }
@@ -183,12 +183,12 @@ p { font-size: 16px; color: var(--muted); padding: 0 10px; margin-bottom: 25px; 
 
 <div class="section active" id="home">
   <h1>Whirl Together</h1>
-  <p>Connecting talent with opportunities</p>
+  <p>Connecting talent with opportunities - Day 2</p>
   
   <div class="stats">
     <div class="stat">
-      <b id="liveCount">1,247</b><br>
-      <span style="font-size:12px; color:var(--muted)">Online Now</span>
+      <b id="liveCount">1</b><br>
+      <span style="font-size:12px; color:var(--muted)">You Online</span>
     </div>
     <div class="stat">
       <b id="streakCount">0</b><br>
@@ -201,7 +201,7 @@ p { font-size: 16px; color: var(--muted); padding: 0 10px; margin-bottom: 25px; 
   </div>
 
   <div class="button-group">
-    <a href="https://chat.whatsapp.com/J0pSLuqKUsTFxYoat4lJbj" class="btn">Join WhatsApp</a>
+    <a href="https://audiomack.com/whirlstorforever" class="btn btn-gold">🎵 Audiomack</a>
     <a href="https://www.tiktok.com/@whirltogetherforever" class="btn">TikTok</a>
     <a href="https://www.facebook.com/profile.php?id=61589247127526" class="btn">Facebook</a>
   </div>
@@ -237,7 +237,6 @@ p { font-size: 16px; color: var(--muted); padding: 0 10px; margin-bottom: 25px; 
 <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
 
 <script>
-// ========== SAFE INIT ==========
 try {
   var quotes = [
     "You can do it. One step at a time.",
@@ -262,20 +261,15 @@ try {
     "Drink 2 liters of water today"
   ];
 
-  // Load saved data
   loadData();
   initTheme();
   newQuote();
   newJoke();
   newChallenge();
   updateStats();
-  setInterval(updateLiveCount, 3000);
   
-} catch(e) {
-  console.log("Init error:", e);
-}
+} catch(e) { console.log("Init error:", e); }
 
-// ========== SECTION SWITCHING ==========
 function showSection(id) {
   try {
     document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
@@ -286,223 +280,10 @@ function showSection(id) {
   } catch(e) { console.log(e); }
 }
 
-// ========== QUOTES ==========
 function newQuote() {
   try {
-    fetch('https://api.quotable.io/random?maxLength=120')
-    .then(res => res.json())
-    .then(data => updateQuoteBox(data.content))
-    .catch(() => {
-        let q = quotes[Math.floor(Math.random() * quotes.length)];
-        updateQuoteBox(q);
-    });
+    let q = quotes[Math.floor(Math.random() * quotes.length)];
+    updateQuoteBox(q);
     addXP(10);
     updateStreak();
-  } catch(e) { console.log(e); }
-}
-
-function updateQuoteBox(q) {
-  try {
-    let safeQ = q.replace(/'/g, "\\'");
-    document.getElementById('quote').innerHTML =
-      `"${q}"<br>
-      <button class="btn" style="margin-top:10px; padding:6px 12px; font-size:13px;" onclick="saveFav('${safeQ}')">❤️ Save</button>
-      <button class="btn btn-blue" style="margin-top:10px; padding:6px 12px; font-size:13px;" onclick="shareQuote('${safeQ}')">📤 Share</button>`;
-  } catch(e) { console.log(e); }
-}
-
-// ========== JOKES ==========
-function newJoke() {
-  try {
-    let i = Math.floor(Math.random() * jokes.length);
-    document.getElementById('joke').innerHTML = jokes[i];
-    addXP(5);
-  } catch(e) { console.log(e); }
-}
-
-// ========== CHALLENGES ==========
-function newChallenge() {
-  try {
-    let i = Math.floor(Math.random() * challenges.length);
-    document.getElementById('challengeBox').innerHTML = challenges[i];
-  } catch(e) { console.log(e); }
-}
-
-function completeChallenge() {
-  try {
-    addXP(50);
-    fireConfetti();
-    alert('Nice! +50 XP earned! 🔥');
-    newChallenge();
-  } catch(e) { console.log(e); }
-}
-
-// ========== FAVORITES ==========
-function saveFav(q) {
-  try {
-    let favorites = JSON.parse(localStorage.getItem('favQuotes') || '[]');
-    if (!favorites.includes(q)) {
-      favorites.push(q);
-      localStorage.setItem('favQuotes', JSON.stringify(favorites));
-      alert('Saved to Favorites!');
-      updateFavoritesView();
-    } else {
-      alert('Already in favorites!');
-    }
-  } catch(e) { console.log(e); }
-}
-
-function updateFavoritesView() {
-  try {
-    let favorites = JSON.parse(localStorage.getItem('favQuotes') || '[]');
-    if (favorites.length === 0) {
-      document.getElementById('favList').innerHTML = "No favorites yet. Save some quotes!";
-      return;
-    }
-    let html = favorites.map((q, i) => 
-      `<div class="fav-item">${i+1}. "${q}"</div>`
-    ).join('');
-    document.getElementById('favList').innerHTML = html;
-  } catch(e) { console.log(e); }
-}
-
-function clearFavs() {
-  try {
-    if (confirm('Clear all favorites?')) {
-      localStorage.removeItem('favQuotes');
-      updateFavoritesView();
-    }
-  } catch(e) { console.log(e); }
-}
-
-// ========== STREAK & XP SYSTEM ==========
-function updateStreak() {
-  try {
-    let today = new Date().toDateString();
-    let lastVisit = localStorage.getItem('lastVisit');
-    let streak = parseInt(localStorage.getItem('streak') || '0');
-    
-    if (lastVisit !== today) {
-      if (lastVisit === new Date(Date.now() - 86400000).toDateString()) {
-        streak++;
-      } else if (lastVisit !== null) {
-        streak = 1;
-      } else {
-        streak = 1;
-      }
-      localStorage.setItem('streak', streak);
-      localStorage.setItem('lastVisit', today);
-    }
-    document.getElementById('streakCount').textContent = streak;
-    updateBadges(streak);
-  } catch(e) { console.log(e); }
-}
-
-function addXP(amount) {
-  try {
-    let xp = parseInt(localStorage.getItem('xp') || '0');
-    xp += amount;
-    localStorage.setItem('xp', xp);
-    document.getElementById('xpCount').textContent = xp;
-  } catch(e) { console.log(e); }
-}
-
-function updateStats() {
-  try {
-    document.getElementById('streakCount').textContent = localStorage.getItem('streak') || '0';
-    document.getElementById('xpCount').textContent = localStorage.getItem('xp') || '0';
-  } catch(e) { console.log(e); }
-}
-
-function updateBadges(streak) {
-  try {
-    let badges = '';
-    if (streak >= 3) badges += '<span class="badge">3 Day Streak 🔥</span>';
-    if (streak >= 7) badges += '<span class="badge">Week Warrior ⚡</span>';
-    if (streak >= 30) badges += '<span class="badge">Monthly Beast 👑</span>';
-    document.getElementById('badges').innerHTML = badges;
-  } catch(e) { console.log(e); }
-}
-
-// ========== LIVE COUNTER ==========
-function updateLiveCount() {
-  try {
-    let count = Math.floor(1200 + Math.random() * 200);
-    document.getElementById('liveCount').textContent = count.toLocaleString();
-  } catch(e) { console.log(e); }
-}
-
-// ========== SHARE ==========
-function shareQuote(q) {
-  try {
-    if (navigator.share) {
-      navigator.share({text: q + "\n\n- Whirl Together"});
-    } else {
-      navigator.clipboard.writeText(q);
-      alert('Quote copied to clipboard!');
-    }
-  } catch(e) { console.log(e); }
-}
-
-// ========== THEME ==========
-function toggleTheme() {
-  try {
-    let current = document.documentElement.getAttribute('data-theme');
-    let newTheme = current === 'light' ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-  } catch(e) { console.log(e); }
-}
-
-function initTheme() {
-  try {
-    let savedTheme = localStorage.getItem('theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-  } catch(e) { console.log(e); }
-}
-
-// ========== CONFETTI ==========
-function fireConfetti() {
-  try {
-    let canvas = document.getElementById('confetti');
-    let ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    
-    let pieces = [];
-    for(let i=0; i<100; i++) {
-      pieces.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height - canvas.height,
-        r: Math.random() * 4 + 1,
-        d: Math.random() * 50
-      });
-    }
-    
-    function draw() {
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      ctx.fillStyle = '#7b5cff';
-      pieces.forEach(p => {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI*2, false);
-        ctx.fill();
-        p.y += Math.cos(p.d) + 1 + p.r/2;
-        p.x += Math.sin(0);
-      });
-    }
-    
-    let interval = setInterval(draw, 33);
-    setTimeout(() => clearInterval(interval), 2000);
-  } catch(e) { console.log(e); }
-}
-
-// ========== LOAD DATA ==========
-function loadData() {
-  try {
-    updateFavoritesView();
-  } catch(e) { console.log(e); }
-}
-</script>
-
-</body>
-  </html>
+  } catch(e)
