@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Whirl Together - Daily Motivation</title>
-<meta name="description" content="Daily encouragement, jokes, challenges for Kitwe and the world. Build streaks, earn XP.">
+<title>Whirl Together - Daily Growth</title>
+<meta name="description" content="Daily motivation, music, movies, stories, universal success principles for everyone.">
 <style>
 :root {
   --bg: #0a0a0f;
@@ -40,14 +40,14 @@ body {
 
 .nav {
   background: var(--card);
-  padding: 12px 5px;
+  padding: 10px 5px;
   position: sticky;
   top: 0;
   z-index: 100;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 5px;
   border-bottom: 1px solid var(--border);
   box-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
@@ -55,10 +55,10 @@ body {
 .nav a {
   color: var(--muted);
   text-decoration: none;
-  font-size: 13px;
+  font-size: 11px;
   cursor: pointer;
-  padding: 6px 12px;
-  border-radius: 20px;
+  padding: 5px 8px;
+  border-radius: 16px;
   transition: all 0.2s;
 }
 
@@ -69,7 +69,7 @@ body {
 }
 
 .section {
-  padding: 30px 15px;
+  padding: 25px 12px;
   border-bottom: 1px solid var(--border);
   display: none;
   animation: fadeIn 0.4s;
@@ -83,32 +83,32 @@ body {
 .section.active { display: block; }
 
 h1 {
-  font-size: 32px;
+  font-size: 28px;
   background: linear-gradient(135deg, var(--accent1), var(--accent2));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin: 20px 0 10px 0;
+  margin: 15px 0 8px 0;
   font-weight: 800;
 }
 
 h2 {
-  font-size: 24px;
+  font-size: 21px;
   color: var(--accent2);
-  margin-bottom: 15px;
+  margin-bottom: 12px;
 }
 
 .subtitle {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--muted);
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 p {
   font-size: 15px;
   color: var(--muted);
-  padding: 0 10px;
-  margin-bottom: 20px;
+  padding: 0 8px;
+  margin-bottom: 18px;
   line-height: 1.6;
 }
 
@@ -116,20 +116,20 @@ p {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px;
-  padding: 0 10px;
-  margin: 20px 0;
+  gap: 8px;
+  padding: 0 8px;
+  margin: 18px 0;
 }
 
 .btn {
   background: linear-gradient(135deg, var(--accent2), #5b4fff);
   color: white;
   border: none;
-  padding: 12px 20px;
-  border-radius: 25px;
-  font-size: 14px;
+  padding: 11px 18px;
+  border-radius: 23px;
+  font-size: 13px;
   cursor: pointer;
-  min-width: 110px;
+  min-width: 95px;
   transition: transform 0.1s, box-shadow 0.2s;
   font-weight: 600;
 }
@@ -143,12 +143,12 @@ p {
 
 .box {
   background: var(--card);
-  padding: 25px 20px;
-  margin: 20px auto;
+  padding: 22px 16px;
+  margin: 18px auto;
   max-width: 650px;
   border-radius: 16px;
   border: 1px solid var(--border);
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.7;
   box-shadow: 0 4px 20px rgba(0,0,0,0.2);
   text-align: left;
@@ -157,40 +157,40 @@ p {
 .stats {
   display: flex;
   justify-content: center;
-  gap: 12px;
-  margin: 25px 0;
+  gap: 10px;
+  margin: 22px 0;
   flex-wrap: wrap;
 }
 
 .stat {
   background: var(--card);
-  padding: 12px 16px;
+  padding: 10px 14px;
   border-radius: 12px;
   border: 1px solid var(--border);
-  min-width: 90px;
+  min-width: 85px;
 }
 
 .stat b {
   color: var(--accent1);
-  font-size: 22px;
+  font-size: 20px;
   display: block;
 }
 
 .stat span {
-  font-size: 11px;
+  font-size: 10px;
   color: var(--muted);
 }
 
 .theme-toggle {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 55px;
-  height: 55px;
+  bottom: 18px;
+  right: 18px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--accent2), #5b4fff);
   border: none;
-  font-size: 26px;
+  font-size: 24px;
   cursor: pointer;
   z-index: 200;
   box-shadow: 0 4px 20px rgba(123, 92, 255, 0.5);
@@ -198,21 +198,21 @@ p {
 
 .fav-item {
   text-align: left;
-  padding: 12px 0;
+  padding: 10px 0;
   border-bottom: 1px solid var(--border);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .badge {
   display: inline-block;
   background: linear-gradient(135deg, var(--accent2), #5b4fff);
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 12px;
-  margin: 5px;
+  padding: 5px 12px;
+  border-radius: 18px;
+  font-size: 11px;
+  margin: 4px;
   font-weight: 600;
 }
 
@@ -230,19 +230,19 @@ p {
   background: var(--card);
   border: 2px solid var(--accent1);
   border-radius: 12px;
-  padding: 10px;
-  margin: 15px auto;
-  max-width: 400px;
-  font-size: 12px;
+  padding: 9px;
+  margin: 12px auto;
+  max-width: 380px;
+  font-size: 11px;
   color: var(--accent1);
 }
 
 .level-bar {
   background: var(--border);
-  height: 8px;
+  height: 7px;
   border-radius: 10px;
-  margin: 10px auto;
-  max-width: 300px;
+  margin: 8px auto;
+  max-width: 280px;
   overflow: hidden;
 }
 
@@ -256,19 +256,49 @@ p {
 .tip-box {
   background: rgba(0, 212, 255, 0.1);
   border-left: 3px solid var(--accent1);
-  padding: 12px;
-  margin: 15px auto;
+  padding: 10px;
+  margin: 12px auto;
   max-width: 600px;
   text-align: left;
   border-radius: 8px;
-  font-size: 13px;
+  font-size: 12px;
+}
+
+.media-box {
+  background: var(--card);
+  padding: 15px;
+  margin: 15px auto;
+  max-width: 650px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+}
+
+iframe {
+  width: 100%;
+  height: 250px;
+  border: none;
+  border-radius: 12px;
+  background: #000;
+}
+
+.book-chapter {
+  text-align: left;
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.book-chapter h3 {
+  color: var(--accent1);
+  margin: 15px 0 10px 0;
+  font-size: 18px;
 }
 
 @media (max-width: 600px) {
-  h1 { font-size: 26px; }
- .box { padding: 18px 15px; font-size: 15px; }
- .stats { gap: 8px; }
- .stat { padding: 10px 12px; min-width: 75px; }
+  h1 { font-size: 24px; }
+ .box { padding: 16px 12px; font-size: 14px; }
+ .stats { gap: 6px; }
+ .stat { padding: 8px 10px; min-width: 70px; }
+  iframe { height: 200px; }
 }
 </style>
 </head>
@@ -279,66 +309,63 @@ p {
 <div class="nav">
   <a class="nav-link active" onclick="showSection('home')">Home</a>
   <a class="nav-link" onclick="showSection('encourage')">Encourage</a>
+  <a class="nav-link" onclick="showSection('stories')">Stories</a>
   <a class="nav-link" onclick="showSection('jokes')">Jokes</a>
   <a class="nav-link" onclick="showSection('challenge')">Challenge</a>
+  <a class="nav-link" onclick="showSection('music')">Music</a>
+  <a class="nav-link" onclick="showSection('movies')">Movies</a>
+  <a class="nav-link" onclick="showSection('tips')">Life Tips</a>
+  <a class="nav-link" onclick="showSection('book')">Book</a>
   <a class="nav-link" onclick="showSection('favorites')">Favorites</a>
-  <a class="nav-link" onclick="showSection('tips')">Pro Tips</a>
 </div>
 
 <div class="section active" id="home">
   <h1>Whirl Together</h1>
-  <p class="subtitle">Connecting talent with opportunities - Day 2</p>
+  <p class="subtitle">Daily growth for everyone - Day 3</p>
 
   <div class="daily-reset" id="resetTimer">Next reset in: Loading...</div>
 
   <div class="stats">
-    <div class="stat">
-      <b id="liveCount">1</b>
-      <span>You Online</span>
-    </div>
-    <div class="stat">
-      <b id="streakCount">0</b>
-      <span>Day Streak</span>
-    </div>
-    <div class="stat">
-      <b id="xpCount">0</b>
-      <span>XP</span>
-    </div>
-    <div class="stat">
-      <b id="levelCount">1</b>
-      <span>Level</span>
-    </div>
+    <div class="stat"><b id="liveCount">1</b><span>You Online</span></div>
+    <div class="stat"><b id="streakCount">0</b><span>Day Streak</span></div>
+    <div class="stat"><b id="xpCount">0</b><span>XP</span></div>
+    <div class="stat"><b id="levelCount">1</b><span>Level</span></div>
   </div>
 
-  <div class="level-bar">
-    <div class="level-fill" id="levelFill" style="width: 0%"></div>
-  </div>
-  <p style="font-size: 12px; color: var(--muted);">Next Level: <span id="xpNeeded">100</span> XP</p>
+  <div class="level-bar"><div class="level-fill" id="levelFill" style="width: 0%"></div></div>
+  <p style="font-size: 11px; color: var(--muted);">Next Level: <span id="xpNeeded">100</span> XP</p>
 
   <div class="button-group">
-    <a href="https://audiomack.com/whirlstorforever" class="btn btn-gold">🎵 Audiomack</a>
-    <a href="https://www.tiktok.com/@whirltogetherforever" class="btn">TikTok</a>
-    <a href="https://www.facebook.com/profile.php?id=61589247127526" class="btn">Facebook</a>
+    <a href="https://audiomack.com/whirlstorforever" target="_blank" class="btn btn-gold">🎵 Music</a>
+    <a href="https://www.tiktok.com/@whirltogetherforever" target="_blank" class="btn">TikTok</a>
+    <a href="https://www.facebook.com/profile.php?id=61589247127526" target="_blank" class="btn">Facebook</a>
   </div>
 
   <div class="tip-box">
-    <b>💡 Daily Tip:</b> Visit every day to keep your streak alive. Miss 1 day = streak resets to 0. FOMO is real bro.
+    <b>For Everyone:</b> Student, worker, business owner, parent. Daily motivation, music, movies, universal principles.
   </div>
 
-  <div id="badges" style="margin-top: 20px;"></div>
+  <div id="badges" style="margin-top: 18px;"></div>
 </div>
 
 <div class="section" id="encourage">
   <h2>Daily Encouragement 💪</h2>
-  <p class="subtitle">Long reads for strong minds. 1k/s internet = time to reflect</p>
+  <p class="subtitle">Universal truths. No location, no job needed.</p>
   <div class="box" id="quote">Loading...</div>
   <button class="btn btn-green" onclick="newQuote()">Get Random</button>
-  <button class="btn" onclick="shareQuoteBtn()">📤 Share This</button>
+  <button class="btn" onclick="shareQuoteBtn()">📤 Share</button>
+</div>
+
+<div class="section" id="stories">
+  <h2>Success Stories 📖</h2>
+  <p class="subtitle">Stories from people who won worldwide</p>
+  <div class="box" id="storyBox">Loading story...</div>
+  <button class="btn btn-blue" onclick="newStory()">Next Story</button>
 </div>
 
 <div class="section" id="jokes">
   <h2>Quick Jokes 😂</h2>
-  <p class="subtitle">Kitwe humor hits different</p>
+  <p class="subtitle">Laughter is medicine for everyone</p>
   <div class="box" id="joke">Loading...</div>
   <button class="btn btn-green" onclick="newJoke()">Tell Me Another</button>
   <button class="btn" onclick="shareJokeBtn()">📤 Share Laugh</button>
@@ -346,106 +373,172 @@ p {
 
 <div class="section" id="challenge">
   <h2>Daily Challenge 🔥</h2>
-  <p class="subtitle">Complete it, earn XP, level up</p>
+  <p class="subtitle">Small action, big growth. For all humans.</p>
   <div class="box" id="challengeBox">Loading challenge...</div>
-  <div class="stats" style="margin-top: 15px;">
-    <div class="stat">
-      <b id="challengesDone">0</b>
-      <span>Done Today</span>
-    </div>
+  <div class="stats" style="margin-top: 12px;">
+    <div class="stat"><b id="challengesDone">0</b><span>Done Today</span></div>
   </div>
   <button class="btn btn-blue" onclick="newChallenge()">New Challenge</button>
   <button class="btn btn-green" onclick="completeChallenge()">I Did It! +50 XP</button>
 </div>
 
-<div class="section" id="favorites">
-  <h2>Your Favorites ❤️</h2>
-  <p class="subtitle">Quotes you saved for hard days</p>
-  <div class="box" id="favList">No favorites yet. Save some quotes!</div>
-  <button class="btn btn-red" onclick="clearFavs()">Clear All</button>
+<div class="section" id="music">
+  <h2>Music Corner 🎵</h2>
+  <p class="subtitle">Motivation through music</p>
+  <div class="media-box">
+    <iframe src="https://audiomack.com/embed/whirlstorforever" allow="autoplay"></iframe>
+    <a href="https://audiomack.com/whirlstorforever" target="_blank" class="btn btn-gold" style="margin-top:10px;">Open App</a>
+  </div>
+</div>
+
+<div class="section" id="movies">
+  <h2>Movie Break 🎬</h2>
+  <p class="subtitle">2min motivation for everyone</p>
+  <div class="media-box">
+    <iframe src="https://www.youtube.com/embed/I_izvAbhExY" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
 </div>
 
 <div class="section" id="tips">
-  <h2>Pro Tips for Builders 🛠️</h2>
-  <p class="subtitle">Learn while you scroll</p>
+  <h2>Life Tips 🛠️</h2>
+  <p class="subtitle">Universal wisdom for daily life</p>
   <div class="box" id="tipBox">Loading tip...</div>
   <button class="btn btn-blue" onclick="newTip()">Next Tip</button>
-  <div class="tip-box">
-    <b>Why visit daily?</b> Each visit gives XP + keeps streak alive. Day 7 streak = special badge + 200 bonus XP.
+</div>
+
+<div class="section" id="book">
+  <h2>Book of Success Principles 📖</h2>
+  <p class="subtitle">100 Universal Laws. For Everyone, Everywhere.</p>
+  
+  <div class="stats" style="margin-bottom:15px;">
+    <div class="stat"><b id="currentPage">1</b><span>Principle</span></div>
+    <div class="stat"><b id="readProgress">1%</b><span>Progress</span></div>
   </div>
+
+  <div class="box book-chapter" id="bookContent">
+    Loading Principle 1...
+  </div>
+
+  <div class="button-group">
+    <button class="btn btn-red" onclick="prevPage()">⬅️ Prev</button>
+    <button class="btn btn-green" onclick="nextPage()">Next ➡️</button>
+    <button class="btn" onclick="saveBookmark()">🔖 Bookmark</button>
+  </div>
+
+  <div class="tip-box">
+    <b>How to use:</b> Read 1 principle daily. Apply it that day. 100 days = new mindset. New principle unlocks at midnight.
+  </div>
+</div>
+
+<div class="section" id="favorites">
+  <h2>Your Favorites ❤️</h2>
+  <p class="subtitle">Quotes, stories, principles you saved</p>
+  <div class="box" id="favList">No favorites yet. Save some!</div>
+  <button class="btn btn-red" onclick="clearFavs()">Clear All</button>
 </div>
 
 <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
 
 <script>
 try {
-  // ========== 50+ LONG QUOTES FOR REVISITS ==========
   var quotes = [
-    "You can do it. One step at a time. You don’t need perfect internet or a perfect phone. You just need to start. Whirl Together started with 1k/s and a broken power button. Look at you now. Day 2 proves you have discipline most people lack.",
-    "Your only limit is your mind. Keep pushing. The world will tell you 'wait until you have better tools'. But winners build with what they have. Your Itel A58 is already a launchpad. GitHub Pages doesn't care about your phone specs.",
-    "Every expert was once a beginner. Start now. Nobody was born knowing GitHub. Nobody launched a site with 1k/s on Day 1. You did. That already puts you ahead of 90% of people who just talk about ideas.",
-    "You're stronger than you think. Don't quit. Kitwe built you tough. Copperbelt people don't fold when things get hard. We adapt. We fix. We ship. That's your superpower that Silicon Valley can't buy.",
-    "Small progress is still progress. Celebrate it. Fixed one button today? That's a win. Added one joke? That's growth. Day 2 Streak? That's discipline. Stack small wins for 365 days and watch what happens.",
-    "Day 2 of Whirl Together. You showed up again. Most people quit after Day 1. But you came back. That consistency is what turns 'projects' into 'movements'. Keep going and 1k/s becomes 1M users.",
-    "Broken power button, working website. If that isn't proof you can overcome obstacles, I don't know what is. Your problems are real, but your will is stronger. Use this story to inspire others.",
-    "1k/s internet taught you patience. Patience builds great products. Facebook, Google, YouTube all started slow. Your slow start is training for a big finish. Slow internet, fast mind.",
-    "Copperbelt is known for mining copper. You're mining something better: skills. Copper runs out. Skills compound forever. Every line of code you write is wealth that nobody can steal.",
-    "The site loads slow but your growth doesn't have to. While pages load, read this quote twice. Let it sink in. Use waiting time as thinking time. That's how legends are built on bad internet."
+    "You can do it. One step at a time. You don't need perfect tools or perfect timing. You just need to start today.",
+    "Your only limit is your mind. Keep pushing. The world rewards those who refuse to quit when things get hard.",
+    "Every expert was once a beginner. Start now. Nobody was born knowing. They learned, failed, and tried again.",
+    "You are stronger than you think. Don't quit. Strength is built during the hardest moments, not the easy ones.",
+    "Small progress is still progress. Celebrate it. One small win daily becomes massive results yearly.",
+    "Consistency beats intensity. Showing up daily for 10 minutes beats working 10 hours once per month.",
+    "Patience pays more than speed. Fast money fades. Slow growth compounds into wealth and wisdom.",
+    "Your story is your power. Don't hide your struggles. Your journey can inspire someone else to start.",
+    "Help others without expecting return. Give value first. Good energy and opportunities always return.",
+    "Mindset creates reality. Change how you think, change how you live. Success starts between your ears."
   ];
 
-  // ========== 30+ LONG JOKES ==========
+  var stories = [
+    "Thomas Edison failed 10,000 times before the light bulb. He said 'I didn't fail. I found 10,000 ways that don't work.'",
+    "JK Rowling was rejected by 12 publishers before Harry Potter. She wrote while broke and a single mom. Now billionaire.",
+    "Colonel Sanders started KFC at age 65. He was rejected 1,009 times before someone said yes. Never too late to start.",
+    "Michael Jordan was cut from his high school basketball team. He used rejection as fuel. Became greatest of all time.",
+    "Oprah was fired from her first TV job. They said she was 'unfit for TV'. She built a media empire instead."
+  ];
+
   var jokes = [
-    "Why don't programmers like nature? Too many bugs. And the WiFi signal is terrible under trees. Give me GitHub Pages any day. At least the bugs there I can fix with code.",
-    "I told my computer I needed a break. Now it sends me KitKat ads every 5 minutes. Bro I meant a coding break, not a chocolate break. My browser is not my mother.",
-    "Why did the scarecrow win an award? Outstanding in his field. Meanwhile I can't even get outstanding WiFi in my field in Kitwe. The scarecrow has better connection than me.",
-    "I'm on a seafood diet. I see food, and I eat it. I'm also on a 1k/s internet diet. I see loading bar, and I wait for it. Patience is my protein.",
-    "1k/s internet in Kitwe be like: You click 'Refresh'... you make tea... you drink tea... you take a nap... you wake up... site finally loads. Speed test says 1k/s but feels like 1k/minute.",
-    "My power button is broken but my code still runs. My phone is half-dead but Whirl Together is fully alive. That's called priorities, ladies and gentlemen. Dead phone, living dreams.",
-    "GitHub Pages loads faster than my neighbor's WiFi. And my neighbor's WiFi is powered by hope and prayers. Respect to GitHub servers worldwide. They carry us on 1k/s.",
-    "Why did the developer go broke? Because he used up all his cache. Meanwhile I'm here in Kitwe using up all my data just to load one page. Save me, compression.",
-    "I asked my WiFi for speed. It gave me character development instead. Thanks WiFi, I guess I'll just become a more patient person while the page loads.",
-    "Coding on 1k/s is like writing a letter to the future. You hit save and pray it arrives before 2027. But when it loads, that feeling is better than fast internet."
+    "Why don't scientists trust atoms? Because they make up everything. Even their own theories.",
+    "I told my wife she was drawing her eyebrows too high. She looked surprised. Now she looks shocked daily.",
+    "Parallel lines have so much in common. It's a shame they'll never meet. Like me and my goals sometimes.",
+    "Why did the math book look sad? Because it had too many problems. Just like my bank account.",
+    "I'm on a seafood diet. I see food, and I eat it. Willpower is overrated anyway."
   ];
 
-  // ========== 20+ DAILY CHALLENGES ==========
   var challenges = [
-    "Send one voice note to a friend today telling them one thing you appreciate about them. Human connection beats 1k/s connection. Screenshot it for +30 XP",
-    "Learn 1 new CSS property today. Google 'CSS flexbox' or 'CSS border-radius'. Try it in your code. Break it. Fix it. Learn it. +40 XP",
-    "Post Whirl Together link on WhatsApp status with caption 'Day 2 of building'. Let people know you're building. Public commitment = motivation. +50 XP",
-    "Help someone without expecting anything back today. Send someone data, explain something, or just listen. Good energy returns to you. +60 XP",
-    "Drink 2 liters of water today. Your brain codes better when hydrated. Your body is your first device. Maintain it. +20 XP",
-    "Add 1 new joke to this code yourself. Open file, find 'var jokes', add your own Kitwe joke. Commit it. You become contributor of your own site. +100 XP",
-    "Turn off phone for 30 minutes and just think about your next feature. No scrolling. No music. Just you and ideas. Clarity comes in silence. +35 XP",
-    "Explain what 'GitHub' does to one person who doesn't code. If you can teach it, you understand it. Teaching = mastery. +45 XP"
+    "Write down 3 things you're grateful for today. Gratitude shifts your mind from lack to abundance. +30 XP",
+    "Help one person without posting about it. Silent service builds character. +50 XP",
+    "Drink 2 liters of water today. Your body and brain perform better hydrated. +20 XP",
+    "Read for 15 minutes today. No phone, no distractions. Just you and a book. +35 XP",
+    "Compliment someone genuinely today. Make their day better. It costs nothing. +30 XP",
+    "Wake up 30 minutes earlier tomorrow. Use time to plan your day. +40 XP"
   ];
 
-  // ========== 15+ PRO TIPS ==========
   var tips = [
-    "Tip 1: GitHub Pages is free forever. No hosting bills. No credit card. Perfect for builders with 1k/s internet and big dreams.",
-    "Tip 2: Commit daily even if it's 1 letter change. GitHub tracks your green squares. Streak on GitHub = streak on life.",
-    "Tip 3: localStorage saves data on user's phone. No database needed. That's how favorites work here. Free backend.",
-    "Tip 4: Mobile first design wins in Africa. 80% of users are on phone. Your site looks good on Itel A58 = it looks good everywhere.",
-    "Tip 5: Copy your code to Google Drive weekly. Phone can die but code in cloud lives forever. Backup is not optional bro.",
-    "Tip 6: Read error messages slowly. Google the exact error. 99% of bugs were solved by someone else already. You are not alone.",
-    "Tip 7: Build in public. Post your progress. People support builders more than dreamers. Day 2 post gets more love than Day 0 idea."
+    "Tip 1: Success is daily discipline, not one-time motivation. Do the boring work when nobody claps.",
+    "Tip 2: Your environment shapes you. If you're the smartest in the room, find a new room.",
+    "Tip 3: Say no more often. Every yes to something is a no to something else. Protect your time.",
+    "Tip 4: Rest is productive. Burnout helps nobody. Sleep, recover, then attack again.",
+    "Tip 5: Compare yourself to yesterday, not to others. Your only competition is who you were.",
+    "Tip 6: Take action before you feel ready. Confidence comes after doing, not before."
+  ];
+
+  // ========== UNIVERSAL BOOK OF PRINCIPLES - 15 NOW, 100 TOTAL ==========
+  var bookPages = [
+    "PRINCIPLE 1: START BEFORE YOU ARE READY\nWaiting for perfect conditions is a trap. Perfect never arrives. Start messy, start small, start now.\n\nWhy it works: Action creates clarity. You figure things out by doing, not thinking.\n\nApply today: Take one small action toward your goal in the next 10 minutes.",
+    
+    "PRINCIPLE 2: CONSISTENCY COMPOUNDS\nSmall actions repeated daily create massive results over time. 1% better daily = 37x better yearly.\n\nWhy it works: Compound interest works for money and for skills. Time multiplies effort.\n\nApply today: Commit to 10 minutes of focused work on your goal every single day.",
+    
+    "PRINCIPLE 3: MINDSET PRECEDES MASTERY\nWhat you believe you can do determines what you actually do. Limiting beliefs kill potential before it starts.\n\nWhy it works: Your brain filters reality based on what you think is possible.\n\nApply today: Write down 3 limiting beliefs and replace them with empowering truths.",
+    
+    "PRINCIPLE 4: FAILURE IS DATA\nEvery failure teaches you something. Only quit if you learn nothing. Winners fail forward.\n\nWhy it works: Failure removes wrong paths and shows you the right one. It's feedback, not final.\n\nApply today: Ask 'what did this teach me?' after your next mistake instead of 'why me?'",
+    
+    "PRINCIPLE 5: GIVE VALUE FIRST\nHelp others win before asking them to help you. Service creates trust. Trust creates opportunities.\n\nWhy it works: People remember how you made them feel. Givers attract givers.\n\nApply today: Solve one small problem for someone without expecting payment.",
+    
+    "PRINCIPLE 6: ENVIRONMENT SHAPES YOU\nYou become like the 5 people you spend time with most. Upgrade your circle, upgrade your life.\n\nWhy it works: Humans are copy machines. We adopt habits, beliefs, and standards from our group.\n\nApply today: Spend time with one person who inspires you to be better.",
+    
+    "PRINCIPLE 7: FOCUS IS YOUR SUPERPOWER\nSaying no to good things lets you say yes to great things. Multitasking kills progress.\n\nWhy it works: Deep work produces 10x results. Shallow work produces zero legacy.\n\nApply today: Work on one important task for 25 minutes with zero distractions.",
+    
+    "PRINCIPLE 8: DISCIPLINE FREES YOU\nDiscipline in the short term creates freedom in the long term. Lazy now = trapped later.\n\nWhy it works: Self-control today prevents regret tomorrow. Discipline is choosing between what you want now and what you want most.\n\nApply today: Do one task you don't feel like doing but know is right.",
+    
+    "PRINCIPLE 9: GRATITUDE CHANGES EVERYTHING\nWhat you focus on grows. Focus on problems = more problems. Focus on progress = more progress.\n\nWhy it works: Gratitude rewires your brain to see opportunities instead of obstacles.\n\nApply today: Write 5 things you're grateful for before checking your phone.",
+    
+    "PRINCIPLE 10: TAKE RESPONSIBILITY\nBlame is a poison. Victims wait. Owners act. Your life is your responsibility, 100%.\n\nWhy it works: When you own the problem, you own the solution. No excuses = no limits.\n\nApply today: Catch yourself blaming and ask 'what can I control here?'",
+    
+    "PRINCIPLE 11: LEARN DAILY\nThe person who stops learning stops growing. Read, listen, observe. Make learning a habit, not an event.\n\nWhy it works: Knowledge compounds. Today's lesson becomes tomorrow's opportunity.\n\nApply today: Learn one new thing for 15 minutes. Article, video, or conversation.",
+    
+    "PRINCIPLE 12: Patience Beats Speed\nSlow and steady wins the race. Haste makes waste. Build foundations before chasing results.\n\nWhy it works: Real success takes time. Overnight success is usually 10 years of patience.\n\nApply today: Choose one long-term goal and accept it will take time. Commit anyway.",
+    
+    "PRINCIPLE 13: INTEGRITY BUILDS LEGACY\nDo the right thing when nobody watches. Character is who you are in the dark.\n\nWhy it works: Reputation takes years to build and seconds to destroy. Integrity is long-term profit.\n\nApply today: Keep one promise to yourself today, even if it's small.",
+    
+    "PRINCIPLE 14: HEALTH IS WEALTH\nYour body is your first business. No energy = no execution. Sleep, move, eat well.\n\nWhy it works: A sick mind cannot create. A tired body cannot execute. Health is the foundation.\n\nApply today: Walk for 20 minutes and sleep 7-8 hours tonight.",
+    
+    "PRINCIPLE 15: SERVE MORE THAN SELF\nThe size of your impact equals the size of people you serve. Think bigger than yourself.\n\nWhy it works: Purpose-driven people outlast profit-driven people. Service creates meaning.\n\nApply today: Ask 'how can I help?' instead of 'what's in it for me?'"
   ];
 
   var currentTipIndex = 0;
+  var currentStoryIndex = 0;
+  var currentBookPage = parseInt(localStorage.getItem('bookPage') || '0');
 
-  // ========== INIT ==========
   loadData();
   initTheme();
   newQuote();
   newJoke();
   newChallenge();
   newTip();
+  newStory();
+  loadBookPage();
   updateStats();
   updateDailyReset();
   setInterval(updateDailyReset, 60000);
 
 } catch(e) { console.log("Init error:", e); }
 
-// ========== SECTION SWITCHING ==========
 function showSection(id) {
   try {
     document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
@@ -453,11 +546,12 @@ function showSection(id) {
     document.getElementById(id).classList.add('active');
     event.target.classList.add('active');
     if (id === 'favorites') updateFavoritesView();
-    addXP(2);
+    if (id === 'book') loadBookPage();
+    if (id === 'music' || id === 'movies') addXP(3);
+    addXP(1);
   } catch(e) { console.log(e); }
 }
 
-// ========== QUOTES ==========
 function newQuote() {
   try {
     let q = quotes[Math.floor(Math.random() * quotes.length)];
@@ -477,7 +571,14 @@ function updateQuoteBox(q) {
   } catch(e) { console.log(e); }
 }
 
-// ========== JOKES ==========
+function newStory() {
+  try {
+    currentStoryIndex = (currentStoryIndex + 1) % stories.length;
+    document.getElementById('storyBox').innerHTML = stories[currentStoryIndex];
+    addXP(5);
+  } catch(e) { console.log(e); }
+}
+
 function newJoke() {
   try {
     let i = Math.floor(Math.random() * jokes.length);
@@ -491,7 +592,6 @@ function shareJokeBtn() {
   shareQuote(joke + "\n\nFrom Whirl Together 😂");
 }
 
-// ========== CHALLENGES ==========
 function newChallenge() {
   try {
     let i = Math.floor(Math.random() * challenges.length);
@@ -506,12 +606,11 @@ function completeChallenge() {
     localStorage.setItem('challengesDone', done);
     document.getElementById('challengesDone').textContent = done;
     fireConfetti();
-    alert('Nice! +50 XP earned! 🔥 Come back tomorrow for new challenge.');
+    alert('Nice! +50 XP earned! 🔥 New challenge tomorrow at midnight.');
     newChallenge();
   } catch(e) { console.log(e); }
 }
 
-// ========== TIPS ==========
 function newTip() {
   try {
     currentTipIndex = (currentTipIndex + 1) % tips.length;
@@ -520,7 +619,48 @@ function newTip() {
   } catch(e) { console.log(e); }
 }
 
-// ========== FAVORITES ==========
+function loadBookPage() {
+  try {
+    currentBookPage = parseInt(localStorage.getItem('bookPage') || '0');
+    if (currentBookPage >= bookPages.length) currentBookPage = bookPages.length - 1;
+    
+    let content = bookPages[currentBookPage];
+    let formatted = content.replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>');
+    document.getElementById('bookContent').innerHTML = `<h3>Principle ${currentBookPage + 1} of 100</h3><p>${formatted}</p>`;
+    document.getElementById('currentPage').textContent = currentBookPage + 1;
+    
+    let progress = Math.round(((currentBookPage + 1) / 100) * 100);
+    document.getElementById('readProgress').textContent = progress + '%';
+    
+    addXP(2);
+  } catch(e) { console.log(e); }
+}
+
+function nextPage() {
+  if (currentBookPage < bookPages.length - 1) {
+    currentBookPage++;
+    localStorage.setItem('bookPage', currentBookPage);
+    loadBookPage();
+    addXP(5);
+  } else {
+    alert('End of available principles bro. New principle added daily. Come back tomorrow for Principle ' + (currentBookPage + 2));
+  }
+}
+
+function prevPage() {
+  if (currentBookPage > 0) {
+    currentBookPage--;
+    localStorage.setItem('bookPage', currentBookPage);
+    loadBookPage();
+  }
+}
+
+function saveBookmark() {
+  localStorage.setItem('bookPage', currentBookPage);
+  alert('Bookmarked Principle ' + (currentBookPage + 1) + ' 🔖');
+  addXP(3);
+}
+
 function saveFav(q) {
   try {
     let favorites = JSON.parse(localStorage.getItem('favQuotes') || '[]');
@@ -540,11 +680,11 @@ function updateFavoritesView() {
   try {
     let favorites = JSON.parse(localStorage.getItem('favQuotes') || '[]');
     if (favorites.length === 0) {
-      document.getElementById('favList').innerHTML = "No favorites yet. Save some quotes!";
+      document.getElementById('favList').innerHTML = "No favorites yet. Save quotes, stories, or principles!";
       return;
     }
     let html = favorites.map((q, i) =>
-      `<div class="fav-item"><span>${i+1}. "${q}"</span>
+      `<div class="fav-item"><span>${i+1}. "${q.substring(0,60)}..."</span>
       <button class="btn btn-red" style="padding:4px 8px; font-size:11px;" onclick="deleteFav(${i})">X</button></div>`
     ).join('');
     document.getElementById('favList').innerHTML = html;
@@ -568,7 +708,6 @@ function clearFavs() {
   } catch(e) { console.log(e); }
 }
 
-// ========== STREAK & XP & LEVEL SYSTEM ==========
 function updateStreak() {
   try {
     let today = new Date().toDateString();
@@ -626,15 +765,13 @@ function updateStats() {
 function updateBadges(streak) {
   try {
     let badges = '';
-    if (streak >= 2) badges += '<span class="badge">Day 2 Survivor 🔥</span>';
-    if (streak >= 3) badges += '<span class="badge">3 Day Streak ⚡</span>';
+    if (streak >= 3) badges += '<span class="badge">3 Day Grinder 🔥</span>';
     if (streak >= 7) badges += '<span class="badge">Week Warrior 👑</span>';
     if (streak >= 30) badges += '<span class="badge">Monthly Beast 💎</span>';
     document.getElementById('badges').innerHTML = badges;
   } catch(e) { console.log(e); }
 }
 
-// ========== DAILY RESET TIMER ==========
 function updateDailyReset() {
   try {
     let now = new Date();
@@ -643,89 +780,4 @@ function updateDailyReset() {
     tomorrow.setHours(0, 0, 0, 0);
     let diff = tomorrow - now;
     let hours = Math.floor(diff / 1000 / 60 / 60);
-    let minutes = Math.floor(diff / 1000 / 60) % 60;
-    document.getElementById('resetTimer').textContent = `Next reset in: ${hours}h ${minutes}m. New quotes + challenges daily!`;
-  } catch(e) { console.log(e); }
-}
-
-// ========== SHARE ==========
-function shareQuoteBtn() {
-  let quote = document.getElementById('quote').textContent.split('"')[1];
-  shareQuote(quote);
-}
-
-function shareQuote(q) {
-  try {
-    if (navigator.share) {
-      navigator.share({title: 'Whirl Together', text: q + "\n\n- Whirl Together"});
-    } else {
-      navigator.clipboard.writeText(q + "\n\nFrom Whirl Together");
-      alert('Quote copied to clipboard! Share it on WhatsApp status.');
-    }
-  } catch(e) { console.log(e); }
-}
-
-// ========== THEME ==========
-function toggleTheme() {
-  try {
-    let current = document.documentElement.getAttribute('data-theme');
-    let newTheme = current === 'light'? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    addXP(1);
-  } catch(e) { console.log(e); }
-}
-
-function initTheme() {
-  try {
-    let savedTheme = localStorage.getItem('theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-  } catch(e) { console.log(e); }
-}
-
-// ========== CONFETTI ==========
-function fireConfetti() {
-  try {
-    let canvas = document.getElementById('confetti');
-    let ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    let pieces = [];
-    for(let i=0; i<150; i++) {
-      pieces.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height - canvas.height,
-        r: Math.random() * 5 + 2,
-        d: Math.random() * 50,
-        color: ['#7b5cff', '#00d4ff', '#facc15', '#22c55e'][Math.floor(Math.random() * 4)]
-      });
-    }
-
-    function draw() {
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      pieces.forEach(p => {
-        ctx.fillStyle = p.color;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI*2, false);
-        ctx.fill();
-        p.y += Math.cos(p.d) + 1 + p.r/2;
-        p.x += Math.sin(p.d);
-      });
-    }
-
-    let interval = setInterval(draw, 30);
-    setTimeout(() => clearInterval(interval), 2500);
-  } catch(e) { console.log(e); }
-}
-
-// ========== LOAD DATA ==========
-function loadData() {
-  try {
-    updateFavoritesView();
-  } catch(e) { console.log(e); }
-}
-</script>
-
-</body>
-  </html>
+    let minutes = Math.floor(diff / 1000 / 60
