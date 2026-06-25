@@ -38,6 +38,38 @@ body {
   min-height: 100vh;
 }
 
+/* NEW LOGO STYLE */
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px;
+  font-size: 22px;
+  font-weight: 800;
+}
+.logo-icon {
+  width: 35px;
+  height: 35px;
+  background: linear-gradient(135deg, var(--accent1), var(--accent2));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+.logo span {
+  background: linear-gradient(135deg, var(--accent1), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.logo small {
+  font-size: 10px;
+  color: var(--muted);
+  font-weight: 400;
+}
+
 .nav {
   background: var(--card);
   padding: 10px 5px;
@@ -132,6 +164,8 @@ p {
   min-width: 95px;
   transition: transform 0.1s, box-shadow 0.2s;
   font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .btn:hover { box-shadow: 0 4px 15px rgba(123, 92, 255, 0.4); }
@@ -293,18 +327,50 @@ iframe {
   font-size: 18px;
 }
 
+/* NEW CAX SOCIAL SECTION */
+.creator-box {
+  background: linear-gradient(135deg, rgba(123, 92, 255, 0.1), rgba(0, 212, 255, 0.1));
+  border: 2px solid var(--accent2);
+  padding: 20px 16px;
+  margin: 25px auto;
+  max-width: 650px;
+  border-radius: 16px;
+  text-align: center;
+}
+.creator-box h3 {
+  color: var(--accent2);
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+.creator-box p {
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
 @media (max-width: 600px) {
   h1 { font-size: 24px; }
 .box { padding: 16px 12px; font-size: 14px; }
 .stats { gap: 6px; }
 .stat { padding: 8px 10px; min-width: 70px; }
   iframe { height: 200px; }
+ .logo { font-size: 18px; }
 }
 </style>
 </head>
 <body>
 
 <canvas id="confetti"></canvas>
+
+<!-- NEW LOGO IN NAV -->
+<div class="nav">
+  <div class="logo">
+    <div class="logo-icon">🌪️</div>
+    <div>
+      <span>WHIRL</span><br>
+      <small>TOGETHER</small>
+    </div>
+  </div>
+</div>
 
 <div class="nav">
   <a class="nav-link active" onclick="showSection('home')">Home</a>
@@ -339,6 +405,18 @@ iframe {
     <a href="https://audiomack.com/whirlstorforever" target="_blank" class="btn btn-gold">🎵 Music</a>
     <a href="https://www.tiktok.com/@whirltogetherforever" target="_blank" class="btn">TikTok</a>
     <a href="https://www.facebook.com/profile.php?id=61589247127526" target="_blank" class="btn">Facebook</a>
+  </div>
+
+  <!-- NEW CAX SECTION -->
+  <div class="creator-box">
+    <h3>Built by LEGIT CAX 🌪️</h3>
+    <p>Follow the movement on all platforms:</p>
+    <div class="button-group">
+      <a href="https://audiomack.com/legit-cax" target="_blank" class="btn btn-gold">🎵 Audiomack</a>
+      <a href="https://www.tiktok.com/@legitcax" target="_blank" class="btn">📱 TikTok</a>
+      <a href="https://youtube.com/@legitcax" target="_blank" class="btn btn-red">▶️ YouTube</a>
+      <a href="https://www.instagram.com/thats_cax" target="_blank" class="btn btn-blue">📸 Instagram</a>
+    </div>
   </div>
 
   <div class="tip-box">
@@ -819,4 +897,4 @@ function loadData() {
 </script>
 
 </body>
-</html>
+  </html>
